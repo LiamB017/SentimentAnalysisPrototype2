@@ -14,7 +14,9 @@ reddit = praw.Reddit(
 def get_sentiment_analysis():
     subreddit = reddit.subreddit("ireland")
 
-    sinn_fein_posts = subreddit.search("sinn fein win election", limit=1)
+    topic = "sinn fein win election"
+
+    sinn_fein_posts = subreddit.search(topic, limit=1)
 
     for post in sinn_fein_posts:
         print(post.title)
@@ -49,7 +51,7 @@ def get_sentiment_analysis():
     else:
         sentiment = " Neutral"
 
-    return {"compound": vs, "sentiment": sentiment}
+    return {"compound": vs, "sentiment": sentiment, "topic": topic}
 
 if __name__ == '__main__':
     app.run(debug=True)
