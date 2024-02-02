@@ -10,7 +10,7 @@ reddit = praw.Reddit(
     user_agent="redditdev sentiment analysis",
     )
 
-@app.route('/sentiment', methods=['GET', 'POST'])
+@app.route('/sentiment', methods=['POST'])
 def get_sentiment_analysis():
 
 

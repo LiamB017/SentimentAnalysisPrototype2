@@ -8,39 +8,6 @@ import SearchForm from "./components/SearchForm.js";
 
 const Home = (props) => {
 
-  // Initialize form as a state variable which accepts email and password
-  const [form, setForm] = useState({
-    topic: "",
-  });
-
-  const handleForm = (e) => {
-    setForm((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-    console.log(e.target.value);
-  };
-
-     const handleClick = async () => {
-       console.log("clicked");
-   const response = await fetch("/sentiment", {
-     method: "POST",
-     headers: {
-       "Content-Type": "application/json",
-     },
-     body: JSON.stringify({ topic: form.topic }),
-   });
-
-      if (response.status === 200) {
-      const responseData = await response.json();
-      console.log('Response from /sentiment:', responseData);
-      // Handle the response data as needed
-    } else {
-      const errorData =  response.json();
-      console.log('Error from /sentiment:', errorData);
-      // Handle the error data as needed
-};
-     }
 
   const [data, setData] = useState([]);
 
