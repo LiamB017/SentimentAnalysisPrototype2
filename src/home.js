@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-
+import SearchForm from "./components/SearchForm.js";
 
 const Home = (props) => {
 
@@ -72,27 +72,9 @@ const Home = (props) => {
             home page
           </Typography>
         </Grid>
-        <Grid item xs={6}>
-          <TextField
-            fullWidth
-            label="Topic"
-            variant="outlined"
-            name="topic"
-            value={form.topic}
-            onChange={handleForm}
-          />
-        </Grid>
-        <Grid item xs={1}>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            onClick={handleClick}
-            sx={{ mx: 4 }}
-          >
-            Submit
-          </Button>
-        </Grid>
+
+
+        <SearchForm/>
       </Grid>
     </>
   );
