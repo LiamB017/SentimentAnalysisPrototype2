@@ -6,18 +6,6 @@ import Analysis from "./analysis.js";
 
 function App() {
 
-   const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch("/sentiment").then(
-     res => res.json()
-      ).then((
-        data) => {
-          setData(data);
-          console.log(data);
-        }
-      )
-  }, []);
 
 
    return (

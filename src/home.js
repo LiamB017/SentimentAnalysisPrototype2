@@ -9,16 +9,6 @@ import SearchForm from "./components/SearchForm.js";
 const Home = (props) => {
 
 
-  const [data, setData] = useState([]);
-
-      useEffect(() => {
-        fetch("/sentiment")
-          .then((res) => res.json())
-          .then((data) => {
-            setData(data);
-            console.log(data);
-          });
-      }, []);
 
   return (
     <>
