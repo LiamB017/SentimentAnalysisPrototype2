@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./home.js";
-import Analysis from "./analysis.js";
+
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
      <Router>
        <Routes>
          <Route path="/" element={<Home />} />
-         <Route path="/analysis" element={<Analysis />} />
+
        </Routes>
      </Router>
    );
