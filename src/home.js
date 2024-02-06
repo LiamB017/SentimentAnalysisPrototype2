@@ -1,15 +1,13 @@
-
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
-import { useNavigate } from "react-router";
 import React, { useState, useEffect } from "react";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import SearchForm from "./components/SearchForm.js";
+import Analytics from "./components/Analytics.js";
 
 const Home = (props) => {
+  const [responseData, setResponseData] = useState(null);
 
-
+  console.log(responseData, "home page has responseData");
 
   return (
     <>
@@ -22,17 +20,31 @@ const Home = (props) => {
         <Grid item xs={8}>
           <Typography
             variant="h2"
-            fontWeight="bolder" // Corrected the property name
+            fontWeight="bolder"
             color="black"
             component="div"
-            sx={{ textAlign: "center" }} // Center text within the Typography component
+            sx={{ textAlign: "center" }}
           >
             home page
           </Typography>
         </Grid>
 
+        <SearchForm setResponseData={setResponseData} />
 
-        <SearchForm/>
+        <Grid item xs={8}>
+          <Typography
+            variant="h2"
+            fontWeight="bolder"
+            color="black"
+            component="div"
+            sx={{ textAlign: "center" }}
+          >
+            {/* Display other information based on responseData if needed */}
+          </Typography>
+        </Grid>
+
+        {/* Pass responseData to the Analytics component */}
+        <Analytics responseData={responseData} />
       </Grid>
     </>
   );

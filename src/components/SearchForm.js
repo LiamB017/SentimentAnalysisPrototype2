@@ -1,14 +1,13 @@
 import Grid from "@mui/material/Grid";
-import { Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-const SearchForm = () => {
-    const navigate = useNavigate();
+const SearchForm = ({ setResponseData }) => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({});
-    const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
 
   const handleForm = (e) => {
     setForm((prevState) => ({
@@ -17,7 +16,6 @@ const SearchForm = () => {
     }));
     console.log(e.target.value);
   };
-
 
   const isRequired = () => {
     let error = false;
@@ -59,23 +57,13 @@ const SearchForm = () => {
         .then(async (response) => {
           const responseData = await response.json();
           console.log("Response from /sentiment:", responseData);
-          navigate("/analysis");
+          setResponseData(responseData);
         })
         .catch((err) => {
           console.error(err);
           console.log(err.response.data);
-          setErrors(err.response.data.errors)
+          setErrors(err.response.data.errors);
         });
-
-      /*  if (response.status === 200) {
-    const responseData = await response.json();
-    console.log("Response from /sentiment:", responseData);
-    // Handle the response data as needed
-  } else {
-    const errorData = response.json();
-    console.log("Error from /sentiment:", errorData);
-    // Handle the error data as needed
-  } */
     }
   };
 
