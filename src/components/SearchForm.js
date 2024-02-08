@@ -5,7 +5,6 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 const SearchForm = ({ setResponseData }) => {
-  const navigate = useNavigate();
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
 

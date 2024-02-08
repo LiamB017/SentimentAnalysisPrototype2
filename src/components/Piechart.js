@@ -7,11 +7,11 @@ const Piechart = (responseData) => {
   console.log(responseData, "Piechart has responsedata");
 
   const data = [
-    { name: "Group A", value: 400 },
-    { name: "Group B", value: 300 },
-    { name: "Group C", value: 300 },
-    { name: "Group D", value: 200 },
+    { name: "Positive", value:0 },
+    { name: "Negative", value: 0 },
+    { name: "Neutral", value: 0 },
   ];
+  console.log(data, "data in piechart");
 
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 

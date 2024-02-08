@@ -24,12 +24,6 @@ function App() {
 
 
 
-    //   <div>
-    //     <h1> Sentiment Analysis </h1>
-    //     <h2> Compund score is {data.vs} </h2>
-    //     <h2> Sentiment is {data.sentiment} </h2>
-    //     <h3> Analytics for {data.topic}</h3>
-    //   </div>
-    // );
+
 
 export default App;

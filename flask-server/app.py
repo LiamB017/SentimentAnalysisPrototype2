@@ -29,13 +29,13 @@ def get_sentiment_analysis():
                 print("this is the post")
 
         for comment in post.comments.list():
-                post.comments.replace_more(limit=0)
+                post.comments.replace_more(limit=3)
                 sfarray = [comment.body for comment in post.comments.list()]
 
-        for comment in post.comments[:10]:
-                post.comment_sort = "top"
-                post.comments[0]
-                print("TOP COMMENT: ", comment.body)
+        top_comments = []
+        for comment in post.comments[:3]:
+                top_comments.append(comment.body)
+                print("10 TOP COMMENTS: ", comment.body)
 
         analyzer = SentimentIntensityAnalyzer()
         vscomment = analyzer.polarity_scores(comment.body)
@@ -44,6 +44,12 @@ def get_sentiment_analysis():
 
         analyzer = SentimentIntensityAnalyzer()
         vs = analyzer.polarity_scores(' '.join(sfarray))
+
+
+        print("top 3 comments", top_comments)
+        for i, comment_body in enumerate(top_comments[:3], start=1):
+                print(f"Comment {i}: {comment_body}")
+
 
         print("Top comment Sentiment ", vscomment['compound'])
         print("Sentiment Score ", vs['compound'])
@@ -56,7 +62,7 @@ def get_sentiment_analysis():
         else:
                 sentiment = " Neutral"
         print("Sentiment is", sentiment)
-        return {"compound": vs['compound'], "sentiment": sentiment,  "topic": topic}
+        return {"compound": vs['compound'], "sentiment": sentiment,  "topic": topic, "positive": vs['pos'],"neutral": vs['neu'], "negative":vs['neg'], "subreddit": subreddit_name, "post": post.title, "comments": len(post.comments), "url": post.url, "top_comment": comment.body, "top_comment_sentiment": vscomment,"top3comments": top_comments}
 
     # Return a response for 'GET' requests or other cases
     return {"message": "Invalid request"}

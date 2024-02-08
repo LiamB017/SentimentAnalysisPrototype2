@@ -1,16 +1,36 @@
-import React, { PureComponent } from "react";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import React from "react";
 import Piechart from "./Piechart";
 import { useState } from "react";
 
-const Analytics = (responseData) => {
+const Analytics = (responseData, negative) => {
 
 
- console.log(responseData, "Analytics has responsedata");
+
 
   return (
     <>
-      <h1>Analytics</h1>
+      {/* {responseData && (
+        <Grid item xs={8}>
+          <Typography
+            fontSize={15}
+            fontWeight="bolder"
+            color="black"
+            component="div"
+            sx={{ textAlign: "center" }}
+          >
+            Sentiment is {responseData.sentiment}
+          </Typography>
+          <Typography
+            fontSize={15}
+            fontWeight="bolder"
+            color="black"
+            component="div"
+            sx={{ textAlign: "center" }}
+          >
+            Compound Score: {responseData.compound}
+          </Typography>
+        </Grid>
+      )} */}
       <Piechart responseData={responseData} />
     </>
   );

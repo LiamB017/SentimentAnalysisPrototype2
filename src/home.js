@@ -3,8 +3,9 @@ import { Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import SearchForm from "./components/SearchForm.js";
 import Analytics from "./components/Analytics.js";
+import TopComments from "./components/TopComments.js";
 
-const Home = (props) => {
+const Home = () => {
   const [responseData, setResponseData] = useState(null);
 
   console.log(responseData, "home page has responseData");
@@ -39,12 +40,37 @@ const Home = (props) => {
             component="div"
             sx={{ textAlign: "center" }}
           >
-            {/* Display other information based on responseData if needed */}
+            <div></div>
           </Typography>
         </Grid>
-
-        {/* Pass responseData to the Analytics component */}
+        <Grid item xs={8}>
+          <TopComments responseData={responseData} />
+        </Grid>
         <Analytics responseData={responseData} />
+
+        {responseData && (
+          <Grid item xs={8}>
+            <Typography
+              fontSize={15}
+              fontWeight="bolder"
+              color="black"
+              component="div"
+              sx={{ textAlign: "center" }}
+            >
+              Sentiment is {responseData.sentiment}
+            </Typography>
+            <Typography
+              fontSize={15}
+              fontWeight="bolder"
+              color="black"
+              component="div"
+              sx={{ textAlign: "center" }}
+            >
+              Compound Score: {responseData.compound}
+            </Typography>
+            "Negative from home: "{responseData.negative}
+          </Grid>
+        )}
       </Grid>
     </>
   );
