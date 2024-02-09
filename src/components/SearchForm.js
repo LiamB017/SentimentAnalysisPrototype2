@@ -43,18 +43,20 @@ const SearchForm = ({ setResponseData }) => {
     return error;
   };
 
-  const handleClick = async () => {
+  const handleClick = () => {
     if (!isRequired()) {
       console.log("clicked");
-      await fetch("/sentiment", {
+      fetch("/sentiment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ topic: form.topic, subreddit: form.subreddit }),
       })
-        .then(async (response) => {
-          const responseData = await response.json();
+        .then((response) => {
+          return response.json();
+        })
+        .then((responseData) => {
           console.log("Response from /sentiment:", responseData);
           setResponseData(responseData);
         })

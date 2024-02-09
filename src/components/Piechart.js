@@ -2,18 +2,20 @@ import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { useState } from "react";
 
-const Piechart = (responseData) => {
-
+const Piechart = ({ responseData }) => {
   console.log(responseData, "Piechart has responsedata");
 
-  const data = [
-    { name: "Positive", value:0 },
-    { name: "Negative", value: 0 },
-    { name: "Neutral", value: 0 },
-  ];
-  console.log(data, "data in piechart");
+  let data = null;
+  if (responseData) {
+    data = [
+      { name: "Positive", value: responseData.positive },
+      { name: "Negative", value: responseData.negative },
+      { name: "Neutral", value: responseData.neutral },
+    ];
+  }
+  console.log(data, "This is piechart data")
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  const COLORS = ["#ade2b1", "#e80022", "#1c78ac"];
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({

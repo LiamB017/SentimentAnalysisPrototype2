@@ -2,11 +2,7 @@ import React from "react";
 import Piechart from "./Piechart";
 import { useState } from "react";
 
-const Analytics = (responseData, negative) => {
-
-
-
-
+const Analytics = ({ responseData }) => {
   return (
     <>
       {/* {responseData && (
@@ -31,7 +27,11 @@ const Analytics = (responseData, negative) => {
           </Typography>
         </Grid>
       )} */}
-      <Piechart responseData={responseData} />
+
+        {responseData && (
+          <Piechart responseData={responseData} />
+        )}
+
     </>
   );
 };
