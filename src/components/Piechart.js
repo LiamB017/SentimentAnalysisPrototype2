@@ -1,5 +1,5 @@
 import React from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 import { useState } from "react";
 
 const Piechart = ({ responseData }) => {
@@ -44,7 +44,7 @@ const Piechart = ({ responseData }) => {
   };
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="40%" height="100%">
       <PieChart width={400} height={400}>
         <Pie
           data={data}
@@ -52,7 +52,7 @@ const Piechart = ({ responseData }) => {
           cy="50%"
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={80}
+          outerRadius={75}
           fill="#8884d8"
           dataKey="value"
         >
@@ -60,6 +60,17 @@ const Piechart = ({ responseData }) => {
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
+        <Legend
+          width={100}
+          wrapperStyle={{
+            top: 40,
+            right: 20,
+            backgroundColor: "#f5f5f5",
+            border: "1px solid #d5d5d5",
+            borderRadius: 3,
+            lineHeight: "20px",
+          }}
+        />
       </PieChart>
     </ResponsiveContainer>
   );
