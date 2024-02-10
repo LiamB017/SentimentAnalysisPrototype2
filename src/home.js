@@ -17,6 +17,7 @@ const Home = () => {
         justifyContent="center"
         alignItems="center"
         height="30vh" // Set the container height to the full viewport height
+        // backgroundColor="#20556f"
       >
         <Grid item xs={8}>
           <Typography
@@ -43,32 +44,12 @@ const Home = () => {
             <div></div>
           </Typography>
         </Grid>
-        <Grid item xs={8}>
-          <TopComments responseData={responseData} />
-        </Grid>
+        <Grid item xs={8}></Grid>
         <Analytics responseData={responseData} />
 
         {responseData && (
           <Grid item xs={8}>
-            <Typography
-              fontSize={15}
-              fontWeight="bolder"
-              color="black"
-              component="div"
-              sx={{ textAlign: "center" }}
-            >
-              Sentiment is {responseData.sentiment}
-            </Typography>
-            <Typography
-              fontSize={15}
-              fontWeight="bolder"
-              color="black"
-              component="div"
-              sx={{ textAlign: "center" }}
-            >
-              Compound Score: {responseData.compound}
-            </Typography>
-            "Negative from home: "{responseData.negative}
+
           </Grid>
         )}
       </Grid>

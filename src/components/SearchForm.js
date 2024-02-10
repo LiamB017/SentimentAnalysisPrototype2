@@ -6,7 +6,10 @@ import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const SearchForm = ({ setResponseData }) => {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    subreddit: "ireland", // Default subreddit value
+    topic: "bruton", // Default topic value
+  });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false); // Track loading state
 
@@ -82,10 +85,10 @@ const SearchForm = ({ setResponseData }) => {
           label="Subreddit"
           variant="outlined"
           name="subreddit"
-          value={form.subreddit}
           onChange={handleForm}
           error={errors.subreddit}
           helperText={errors.subreddit?.message}
+          value={"ireland"}
         />
       </Grid>
       <Grid item xs={6}>
@@ -94,10 +97,11 @@ const SearchForm = ({ setResponseData }) => {
           label="Topic"
           variant="outlined"
           name="topic"
-          value={form.topic}
+
           onChange={handleForm}
           error={errors.topic}
           helperText={errors.topic?.message}
+          value={"bruton"}
         />
       </Grid>
       <Grid item xs={8}>
@@ -110,7 +114,8 @@ const SearchForm = ({ setResponseData }) => {
         >
           Submit
         </Button>
-        {loading && <CircularProgress />} {/* Render ActivityIndicator when loading */}
+        {loading && <CircularProgress />}{" "}
+        {/* Render ActivityIndicator when loading */}
       </Grid>
     </>
   );

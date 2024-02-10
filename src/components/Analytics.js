@@ -1,37 +1,28 @@
 import React from "react";
 import Piechart from "./Piechart";
-import { useState, ActivityIndicator } from "react";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import TopComments from "./TopComments";
+import SentimentStats from "./SentimentStats";
 
 const Analytics = ({ responseData }) => {
   return (
     <>
-      {/* {responseData && (
-        <Grid item xs={8}>
-          <Typography
-            fontSize={15}
-            fontWeight="bolder"
-            color="black"
-            component="div"
-            sx={{ textAlign: "center" }}
-          >
-            Sentiment is {responseData.sentiment}
-          </Typography>
-          <Typography
-            fontSize={15}
-            fontWeight="bolder"
-            color="black"
-            component="div"
-            sx={{ textAlign: "center" }}
-          >
-            Compound Score: {responseData.compound}
-          </Typography>
-        </Grid>
-      )} */}
-
-        {responseData && (
-          <Piechart responseData={responseData} />
-        )}
-
+      {responseData && (
+        <>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <TopComments responseData={responseData} />
+            </Grid>
+            <Grid item xs={6}>
+              <Piechart responseData={responseData} />
+            </Grid>
+            <Grid item xs={6}>
+           <SentimentStats responseData={responseData} />
+            </Grid>
+          </Grid>
+        </>
+      )}
     </>
   );
 };
