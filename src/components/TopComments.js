@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Grid from "@mui/material/Grid";
+import { Typography } from "@mui/material";
+
 
 const TopComments = ({ responseData }) => {
   // Remove the useState for responseData here
@@ -7,21 +10,21 @@ const TopComments = ({ responseData }) => {
   return (
     <div>
       {responseData && (
-        <div>
-          <h1>Top Comments</h1>
+        <Grid item xs={8}>
+          <Typography variant="h4">Top comments</Typography>
           <div>
-            <h3>Comment 1</h3>
-            <p>{responseData.top3comments[0]}</p>
+            <Typography variant="h6">Comment 1</Typography>
+            <Typography>{responseData.top3comments[0]}</Typography>
           </div>
           <div>
-            <h3>Comment 2</h3>
-            <p>{responseData.top3comments[1]}</p>
+            <Typography variant="h6">Comment 2</Typography>
+            <Typography>{responseData.top3comments[1]}</Typography>
           </div>
           <div>
-            <h3>Comment 3</h3>
-            <p>{responseData.top3comments[2]}</p>
+            <Typography variant="h6">Comment 3</Typography>
+            <Typography>{responseData.top3comments[2]}</Typography>
           </div>
-        </div>
+        </Grid>
       )}
     </div>
   );

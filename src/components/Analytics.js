@@ -1,6 +1,6 @@
 import React from "react";
 import Piechart from "./Piechart";
-import { useState } from "react";
+import { useState, ActivityIndicator } from "react";
 
 const Analytics = ({ responseData }) => {
   return (

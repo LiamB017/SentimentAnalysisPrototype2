@@ -3,10 +3,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const SearchForm = ({ setResponseData }) => {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false); // Track loading state
 
   const handleForm = (e) => {
     setForm((prevState) => ({
@@ -45,7 +47,8 @@ const SearchForm = ({ setResponseData }) => {
 
   const handleClick = () => {
     if (!isRequired()) {
-      console.log("clicked");
+      setLoading(true); // Start loading
+
       fetch("/sentiment", {
         method: "POST",
         headers: {
@@ -64,6 +67,9 @@ const SearchForm = ({ setResponseData }) => {
           console.error(err);
           console.log(err.response.data);
           setErrors(err.response.data.errors);
+        })
+        .finally(() => {
+          setLoading(false); // Stop loading
         });
     }
   };
@@ -94,7 +100,7 @@ const SearchForm = ({ setResponseData }) => {
           helperText={errors.topic?.message}
         />
       </Grid>
-      <Grid item xs={1}>
+      <Grid item xs={8}>
         <Button
           type="submit"
           variant="contained"
@@ -104,6 +110,7 @@ const SearchForm = ({ setResponseData }) => {
         >
           Submit
         </Button>
+        {loading && <CircularProgress />} {/* Render ActivityIndicator when loading */}
       </Grid>
     </>
   );
