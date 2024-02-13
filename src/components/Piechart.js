@@ -46,8 +46,8 @@ const Piechart = ({ responseData }) => {
   };
 
   return (
-    <ResponsiveContainer width="40%" height="30%">
-      <PieChart width={400} height={400}>
+    <ResponsiveContainer width="40%" height="40%">
+      <PieChart width={400} height={500}>
         <Pie
           data={data}
           cx="50%"
@@ -75,8 +75,8 @@ const Piechart = ({ responseData }) => {
         />
       </PieChart>
 
-        <SentimentStats responseData={responseData} />
 
+<SentimentStats responseData={responseData} />
     </ResponsiveContainer>
   );
 };

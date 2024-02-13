@@ -11,19 +11,14 @@ const Analytics = ({ responseData }) => {
     <>
       {responseData && (
         <>
-          <Grid container spacing={2}>
-            <Grid item xs={6} my={5}>
+          <Grid container spacing={0}>
+            <Grid item xs={6} my={10}>
               <TopComments responseData={responseData} />
             </Grid>
-            <Grid item xs={6} my={5}>
+
+            <Grid item xs={6} my={10}>
               <Piechart responseData={responseData} />
             </Grid>
-
-            <Grid item xs={4}>
-              <SentimentStats responseData={responseData} />
-            </Grid>
-
-            <Barchart />
           </Grid>
         </>
       )}

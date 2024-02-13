@@ -1,8 +1,6 @@
 import React from "react";
 import Piechart from "./Piechart";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import TopComments from "./TopComments";
 import { Box } from "@mui/material";
 import { Typography } from "@mui/material";
 
@@ -12,35 +10,73 @@ const SentimentStats = ({ responseData }) => {
       {responseData && (
         <>
           <Grid container spacing={2}>
-            <Grid item xs={6}>
-              <Box sx={{ border: "1px solid #000", padding: "1rem" }}>
-                <Typography
-                  fontSize={15}
-                  fontWeight="bolder"
-                  color="black"
-                  component="div"
-                  sx={{ textAlign: "center" }}
+            <Grid item xs={24}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  backgroundColor: "#20556f",
+                  borderRadius: 2,
+                  padding: 2,
+                }}
+              >
+                <Box
+                  sx={{
+                    backgroundColor: "#f5f5f5",
+                    borderRadius: 2,
+                    padding: 2,
+                    mx: 2,
+                  }}
                 >
-                  Sentiment is {responseData.sentiment}
-                </Typography>
-                <Typography
-                  fontSize={15}
-                  fontWeight="bolder"
-                  color="black"
-                  component="div"
-                  sx={{ textAlign: "center" }}
+                  <Typography
+                    fontSize={12}
+                    fontWeight="bolder"
+                    color="black"
+                    component="div"
+                    sx={{ textAlign: "center" }}
+                  >
+                    Sentiment is {responseData.sentiment}
+                  </Typography>
+                </Box>
+
+                <Box
+                  sx={{
+                    backgroundColor: "#f5f5f5",
+                    borderRadius: 2,
+                    padding: 2,
+                    mx: 2,
+                  }}
                 >
-                  Compound Score: {responseData.compound}
-                </Typography>
-                <Typography
-                  fontSize={15}
-                  fontWeight="bolder"
-                  color="black"
-                  component="div"
-                  sx={{ textAlign: "center" }}
+                  <Typography
+                    fontSize={12}
+                    fontWeight="bolder"
+                    color="black"
+                    component="div"
+                    sx={{ textAlign: "center" }}
+                  >
+                    Compound Score is {responseData.compound}
+                  </Typography>
+                </Box>
+
+                <Box
+                  sx={{
+                    backgroundColor: "#f5f5f5",
+                    borderRadius: 2,
+                    padding: 2,
+                    mx: 2,
+                  }}
                 >
-                  Sentiment analyzed from {responseData.comments} comments
-                </Typography>
+                  <Typography
+                    fontSize={12}
+                    fontWeight="bolder"
+                    color="black"
+                    component="div"
+                    sx={{ textAlign: "center" }}
+                  >
+                    Sentiment Analyzed from {responseData.comments}
+                  </Typography>
+                </Box>
               </Box>
             </Grid>
           </Grid>

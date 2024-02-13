@@ -89,12 +89,10 @@ const SearchForm = ({ setResponseData }) => {
             onChange={handleForm}
             error={errors.subreddit}
             helperText={errors.subreddit?.message}
-            value={"ireland"}
+            value={form.subreddit}
           />
         </Grid>
-
         {/* Add space between the text fields */}
-
         <Grid item xs={6} my={2} mx={45}>
           <TextField
             fullWidth
@@ -104,7 +102,7 @@ const SearchForm = ({ setResponseData }) => {
             onChange={handleForm}
             error={errors.topic}
             helperText={errors.topic?.message}
-            value={"bruton"}
+            value={form.topic}
           />
         </Grid>
         <Grid item xs={8} my={2} mx={65}>
@@ -117,8 +115,12 @@ const SearchForm = ({ setResponseData }) => {
           >
             Submit
           </Button>
-          {loading && <CircularProgress />}{" "}
+
           {/* Render ActivityIndicator when loading */}
+        </Grid>
+        <Grid item xs={8} my={10} mx={72}>
+          {" "}
+          {loading && <CircularProgress/>}{" "}
         </Grid>
       </Grid>
     </>

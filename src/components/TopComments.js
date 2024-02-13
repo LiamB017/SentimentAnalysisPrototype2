@@ -46,7 +46,7 @@ const TopComments = ({ responseData }) => {
                 </Typography>{" "}
                 <Typography>{responseData.top3commentsdatetime[0]}</Typography>
                 <Typography>
-                  {responseData.top3comments[0].substring(0, 375)}
+                  {responseData.top3comments[0].substring(0, 200)}
                 </Typography>
               </Box>
             </div>
@@ -66,7 +66,7 @@ const TopComments = ({ responseData }) => {
                 </Typography>{" "}
                 <Typography>{responseData.top3commentsdatetime[1]}</Typography>
                 <Typography>
-                  {responseData.top3comments[1].substring(0, 375)}
+                  {responseData.top3comments[1].substring(0, 200)}
                 </Typography>
               </Box>
             </div>
@@ -82,11 +82,11 @@ const TopComments = ({ responseData }) => {
               >
                 {" "}
                 <Typography variant="h6" color="#20556f" fontWeight="Bold">
-                  Top Comment 1
+                  Top Comment 3
                 </Typography>{" "}
                 <Typography>{responseData.top3commentsdatetime[2]}</Typography>
                 <Typography>
-                  {responseData.top3comments[2].substring(0, 375)}
+                  {responseData.top3comments[2].substring(0, 205) + "..."}
                 </Typography>
               </Box>
             </div>
