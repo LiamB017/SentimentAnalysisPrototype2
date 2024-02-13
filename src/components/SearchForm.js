@@ -79,43 +79,47 @@ const SearchForm = ({ setResponseData }) => {
 
   return (
     <>
-      <Grid item xs={6}>
-        <TextField
-          fullWidth
-          label="Subreddit"
-          variant="outlined"
-          name="subreddit"
-          onChange={handleForm}
-          error={errors.subreddit}
-          helperText={errors.subreddit?.message}
-          value={"ireland"}
-        />
-      </Grid>
-      <Grid item xs={6}>
-        <TextField
-          fullWidth
-          label="Topic"
-          variant="outlined"
-          name="topic"
+      <Grid>
+        <Grid item xs={6} mx={45} my={5}>
+          <TextField
+            fullWidth
+            label="Subreddit"
+            variant="outlined"
+            name="subreddit"
+            onChange={handleForm}
+            error={errors.subreddit}
+            helperText={errors.subreddit?.message}
+            value={"ireland"}
+          />
+        </Grid>
 
-          onChange={handleForm}
-          error={errors.topic}
-          helperText={errors.topic?.message}
-          value={"bruton"}
-        />
-      </Grid>
-      <Grid item xs={8}>
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          onClick={handleClick}
-          sx={{ mx: 4 }}
-        >
-          Submit
-        </Button>
-        {loading && <CircularProgress />}{" "}
-        {/* Render ActivityIndicator when loading */}
+        {/* Add space between the text fields */}
+
+        <Grid item xs={6} my={2} mx={45}>
+          <TextField
+            fullWidth
+            label="Topic"
+            variant="outlined"
+            name="topic"
+            onChange={handleForm}
+            error={errors.topic}
+            helperText={errors.topic?.message}
+            value={"bruton"}
+          />
+        </Grid>
+        <Grid item xs={8} my={2} mx={65}>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            onClick={handleClick}
+            sx={{ mx: 4 }}
+          >
+            Submit
+          </Button>
+          {loading && <CircularProgress />}{" "}
+          {/* Render ActivityIndicator when loading */}
+        </Grid>
       </Grid>
     </>
   );

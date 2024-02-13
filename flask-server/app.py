@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import praw
+
 import datetime
 
 app = Flask(__name__)
@@ -55,6 +56,7 @@ def get_sentiment_analysis():
                         print("Top comment Sentiment ", vscomment['compound'])
                         print("Sentiment Score ", vs['compound'])
 
+
                         if vs['compound'] >= 0.05:
                                 sentiment = " largely Positive"
                         elif vs['compound'] <= -0.05:
@@ -62,7 +64,8 @@ def get_sentiment_analysis():
                         else:
                                 sentiment = " Neutral"
                         print("Sentiment is", sentiment)
-                        return {"compound": vs['compound'], "sentiment": sentiment,  "topic": topic, "positive": vs['pos'],"neutral": vs['neu'], "negative":vs['neg'], "subreddit": subreddit_name, "post": post.title, "comments": len(post.comments), "url": post.url, "top_comment": comment.body, "top_comment_sentiment": vscomment,"top3comments": top_comments, "top3commentsdatetime": top_comments_datetime}
+
+                        return {"compound": vs['compound'], "sentiment": sentiment,  "topic": topic, "positive": vs['pos'],"neutral": vs['neu'], "negative":vs['neg'], "subreddit": subreddit_name, "post": post.title, "comments": len(post.comments), "url": post.url, "top_comment": comment.body, "top_comment_sentiment": vscomment,"top3comments": top_comments, "top3commentsdatetime": top_comments_datetime,"array": sfarray}
 
         # Return a response for 'GET' requests or other cases
         return {"message": "Invalid request"}

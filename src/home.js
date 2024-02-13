@@ -31,7 +31,27 @@ const Home = () => {
           </Typography>
         </Grid>
 
-        <SearchForm setResponseData={setResponseData} />
+        <Grid item xs={12}>
+          <SearchForm setResponseData={setResponseData} />
+        </Grid>
+
+        <Grid container justifyContent="center" alignItems="center">
+          {responseData && (
+            <Grid item xs={4}>
+              <Typography
+                variant="h6"
+                fontWeight="bolder"
+                color="black"
+                component="div"
+                sx={{ textAlign: "center" }}
+              >
+                {" "}
+                {responseData.post}
+              </Typography>
+
+            </Grid>
+          )}
+        </Grid>
 
         <Grid item xs={8}>
           <Typography
@@ -46,12 +66,6 @@ const Home = () => {
         </Grid>
         <Grid item xs={8}></Grid>
         <Analytics responseData={responseData} />
-
-        {responseData && (
-          <Grid item xs={8}>
-
-          </Grid>
-        )}
       </Grid>
     </>
   );

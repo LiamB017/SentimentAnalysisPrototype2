@@ -14,28 +14,81 @@ const TopComments = ({ responseData }) => {
         // ...
 
         <Grid item xs={8}>
-          <Typography variant="h5">Top comments</Typography>
-          <Box sx={{ border: "1px solid #000", padding: "1rem" }}>
+          <Box
+            sx={{
+              border: "1px solid #000",
+              padding: "1rem",
+              borderRadius: "6px",
+              backgroundColor: "#20556f",
+            }}
+          >
             <div>
-              <Typography variant="h6">Top Comment 1</Typography>
-              <Typography>{responseData.top3commentsdatetime[0]}</Typography>
-              <Typography>
-                {responseData.top3comments[0].substring(0, 375)}
-              </Typography>
+              <Box
+                sx={{
+                  backgroundColor: "#20556f",
+                  color: "#fff",
+                }}
+              >
+                {" "}
+                <Typography variant="h5">Top comments</Typography>
+              </Box>
+              <Box
+                sx={{
+                  backgroundColor: "#fff",
+                  borderRadius: "6px",
+                  padding: "1rem",
+                  margin: "1rem 0",
+                }}
+              >
+                {" "}
+                <Typography variant="h6" color="#20556f" fontWeight="Bold">
+                  Top Comment 1
+                </Typography>{" "}
+                <Typography>{responseData.top3commentsdatetime[0]}</Typography>
+                <Typography>
+                  {responseData.top3comments[0].substring(0, 375)}
+                </Typography>
+              </Box>
             </div>
             <div>
-              <Typography variant="h6">Top Comment 2</Typography>
-              <Typography>{responseData.top3commentsdatetime[1]}</Typography>
-              <Typography>
-                {responseData.top3comments[1].substring(0, 375)}
-              </Typography>
+
+              <Box
+                sx={{
+                  backgroundColor: "#fff",
+                  borderRadius: "6px",
+                  padding: "1rem",
+                  margin: "1rem 0",
+                }}
+              >
+                {" "}
+                <Typography variant="h6" color="#20556f" fontWeight="Bold">
+                  Top Comment 2
+                </Typography>{" "}
+                <Typography>{responseData.top3commentsdatetime[1]}</Typography>
+                <Typography>
+                  {responseData.top3comments[1].substring(0, 375)}
+                </Typography>
+              </Box>
             </div>
             <div>
-              <Typography variant="h6">Top Comment 3</Typography>
-              <Typography>{responseData.top3commentsdatetime[2]}</Typography>
-              <Typography>
-                {responseData.top3comments[2].substring(0, 375)}
-              </Typography>
+
+              <Box
+                sx={{
+                  backgroundColor: "#fff",
+                  borderRadius: "6px",
+                  padding: "1rem",
+                  margin: "1rem 0",
+                }}
+              >
+                {" "}
+                <Typography variant="h6" color="#20556f" fontWeight="Bold">
+                  Top Comment 1
+                </Typography>{" "}
+                <Typography>{responseData.top3commentsdatetime[2]}</Typography>
+                <Typography>
+                  {responseData.top3comments[2].substring(0, 375)}
+                </Typography>
+              </Box>
             </div>
           </Box>
         </Grid>

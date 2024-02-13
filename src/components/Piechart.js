@@ -1,6 +1,8 @@
 import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 import { useState } from "react";
+import SentimentStats from "./SentimentStats";
+import Grid from "@mui/material/Grid";
 
 const Piechart = ({ responseData }) => {
   console.log(responseData, "Piechart has responsedata");
@@ -44,7 +46,7 @@ const Piechart = ({ responseData }) => {
   };
 
   return (
-    <ResponsiveContainer width="40%" height="100%">
+    <ResponsiveContainer width="40%" height="30%">
       <PieChart width={400} height={400}>
         <Pie
           data={data}
@@ -61,10 +63,10 @@ const Piechart = ({ responseData }) => {
           ))}
         </Pie>
         <Legend
-          width={100}
+          width={150}
           wrapperStyle={{
-            top: 40,
-            right: 20,
+            top: 20,
+            left: 280,
             backgroundColor: "#f5f5f5",
             border: "1px solid #d5d5d5",
             borderRadius: 3,
@@ -72,6 +74,9 @@ const Piechart = ({ responseData }) => {
           }}
         />
       </PieChart>
+
+        <SentimentStats responseData={responseData} />
+
     </ResponsiveContainer>
   );
 };
