@@ -20,17 +20,19 @@ def get_sentiment_analysis():
                 subreddit_name = request.json.get('subreddit', '')
                 subreddit = reddit.subreddit(subreddit_name) if subreddit_name else None
                 if topic and subreddit:
-                  sinn_fein_posts = subreddit.search(topic, limit=1)
+                        searched_posts = subreddit.search(topic, sort='hot', limit=1)
 
-                for post in sinn_fein_posts:
+                for post in searched_posts:
                         print(post.title)
                         print("Number of Comments:", len(post.comments))
                         print(post.url)
                         print("this is the post")
+                        post_image_url = post.url
+
 
                         for comment in post.comments.list():
                                 post.comments.replace_more(limit=3)
-                                sfarray = [comment.body for comment in post.comments.list()]
+                                commentsarray = [comment.body for comment in post.comments.list()]
 
                         top_comments = []
                         top_comments_datetime = []
@@ -43,10 +45,10 @@ def get_sentiment_analysis():
                         analyzer = SentimentIntensityAnalyzer()
                         vscomment = analyzer.polarity_scores(comment.body)
 
-                        print(sfarray)
+                        print(commentsarray)
 
                         analyzer = SentimentIntensityAnalyzer()
-                        vs = analyzer.polarity_scores(' '.join(sfarray))
+                        vs = analyzer.polarity_scores(' '.join(commentsarray))
 
                         print("top 3 comments", top_comments)
                         for i, comment_body in enumerate(top_comments[:3], start=1):
@@ -65,7 +67,7 @@ def get_sentiment_analysis():
                                 sentiment = " Neutral"
                         print("Sentiment is", sentiment)
 
-                        return {"compound": vs['compound'], "sentiment": sentiment,  "topic": topic, "positive": vs['pos'],"neutral": vs['neu'], "negative":vs['neg'], "subreddit": subreddit_name, "post": post.title, "comments": len(post.comments), "url": post.url, "top_comment": comment.body, "top_comment_sentiment": vscomment,"top3comments": top_comments, "top3commentsdatetime": top_comments_datetime,"array": sfarray}
+                        return {"compound": vs['compound'], "sentiment": sentiment,  "topic": topic, "positive": vs['pos'],"neutral": vs['neu'], "negative":vs['neg'], "subreddit": subreddit_name, "post": post.title, "comments": len(post.comments), "url": post.url, "top_comment": comment.body, "top_comment_sentiment": vscomment,"top3comments": top_comments, "top3commentsdatetime": top_comments_datetime,"array": commentsarray, "post_image_url": post_image_url}
 
         # Return a response for 'GET' requests or other cases
         return {"message": "Invalid request"}

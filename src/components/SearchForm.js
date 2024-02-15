@@ -1,6 +1,5 @@
 import Grid from "@mui/material/Grid";
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -111,14 +110,14 @@ const SearchForm = ({ setResponseData }) => {
             variant="contained"
             color="primary"
             onClick={handleClick}
-            sx={{ mx: 4 }}
+            sx={{ mx: 20 }}
           >
             Submit
           </Button>
 
           {/* Render ActivityIndicator when loading */}
         </Grid>
-        <Grid item xs={8} my={10} mx={72}>
+        <Grid item xs={8} my={10} mx={85}>
           {" "}
           {loading && <CircularProgress/>}{" "}
         </Grid>

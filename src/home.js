@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import SearchForm from "./components/SearchForm.js";
 import Analytics from "./components/Analytics.js";
-import TopComments from "./components/TopComments.js";
+import { Box } from "@mui/material";
 
 const Home = () => {
   const [responseData, setResponseData] = useState(null);
@@ -35,23 +35,47 @@ const Home = () => {
           <SearchForm setResponseData={setResponseData} />
         </Grid>
 
-        <Grid container justifyContent="center" alignItems="center">
+        <Grid
+          container
+          justifyContent="center"
+          alignItems="center"
+          flexDirection="row"
+        >
           {responseData && (
-            <Grid item xs={4}>
-              <Typography
-                variant="h6"
-                fontWeight="bolder"
-                color="black"
-                component="div"
-                sx={{ textAlign: "center" }}
-              >
-                {" "}
-                {responseData.post}
-              </Typography>
+            <>
+              <Grid item xs={4}>
+                <Box
+                  sx={{
+                    border: "1px solid #000",
+                    padding: "1rem",
+                    borderRadius: "6px",
+                    backgroundColor: "#20556f",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    color="white"
+                    component="div"
+                    sx={{ textAlign: "center", fontWeight: "bolder" }}
+                  >
+                    {responseData.post}
+                  </Typography>
+                  <Typography
+                    color="white"
+                    component="div"
+                    sx={{ textAlign: "center", fontWeight: "bolder", marginTop: "1rem" }}
+                  >
+                    <a href={responseData.url} style={{ color: "white" }}>{responseData.url}</a>
+                  </Typography>
+                </Box>
+              </Grid>
 
-            </Grid>
+</>
+
+
+
           )}
-        </Grid>
+</Grid>
 
         <Grid item xs={8}>
           <Typography

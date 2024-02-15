@@ -74,7 +74,7 @@ const SentimentStats = ({ responseData }) => {
                     component="div"
                     sx={{ textAlign: "center" }}
                   >
-                    Sentiment Analyzed from {responseData.comments}
+                    Sentiment Analyzed from {responseData.comments} comments
                   </Typography>
                 </Box>
               </Box>
