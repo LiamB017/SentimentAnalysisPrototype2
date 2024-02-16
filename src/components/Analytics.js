@@ -19,6 +19,9 @@ const Analytics = ({ responseData }) => {
             <Grid item xs={6} my={10}>
               <Piechart responseData={responseData} />
             </Grid>
+            <Grid item xs={6} my={10}>
+              <Barchart responseData={responseData} />
+            </Grid>
           </Grid>
         </>
       )}

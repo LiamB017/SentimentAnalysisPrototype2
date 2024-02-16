@@ -3,9 +3,17 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 import { useState } from "react";
 import SentimentStats from "./SentimentStats";
 import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 
 const Piechart = ({ responseData }) => {
+   const [showSecondChart, setShowSecondChart] = useState(false);
   console.log(responseData, "Piechart has responsedata");
+
+  const handleClick = () => {
+     setShowSecondChart((prevShowSecondChart) => !prevShowSecondChart);
+
+    console.log("Button clicked");
+  };
 
   let data = null;
   if (responseData) {
@@ -15,6 +23,15 @@ const Piechart = ({ responseData }) => {
       { name: "Neutral", value: responseData.neutral },
     ];
   }
+
+  let data2 = null;
+   if (responseData) {
+     data2 = [
+       { name: "Positive", value: responseData.positive },
+       { name: "Negative", value: responseData.negative }
+     ];
+   }
+
   console.log(data, "This is piechart data")
 
   const COLORS = ["#ade2b1", "#e80022", "#1c78ac"];
@@ -46,37 +63,82 @@ const Piechart = ({ responseData }) => {
   };
 
   return (
-    <ResponsiveContainer width="40%" height="40%">
-      <PieChart width={400} height={500}>
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          labelLine={false}
-          label={renderCustomizedLabel}
-          outerRadius={75}
-          fill="#8884d8"
-          dataKey="value"
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-        <Legend
-          width={150}
-          wrapperStyle={{
-            top: 20,
-            left: 280,
-            backgroundColor: "#f5f5f5",
-            border: "1px solid #d5d5d5",
-            borderRadius: 3,
-            lineHeight: "20px",
-          }}
-        />
-      </PieChart>
-
-
-<SentimentStats responseData={responseData} />
+    <ResponsiveContainer width="40%" height="38%">
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        sx={{ mx: 20 }}
+        onClick={handleClick}
+      >
+        {showSecondChart ? <p>Positive/Negative Chart</p> : <p>Neutral Chart</p>}
+      </Button>
+      {showSecondChart ? (
+        <PieChart width={400} height={500}>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            label={renderCustomizedLabel}
+            outerRadius={75}
+            fill="#8884d8"
+            dataKey="value"
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
+            ))}
+          </Pie>
+          <Legend
+            width={150}
+            wrapperStyle={{
+              top: 20,
+              left: 280,
+              backgroundColor: "#f5f5f5",
+              border: "1px solid #d5d5d5",
+              borderRadius: 3,
+              lineHeight: "20px",
+            }}
+          />
+        </PieChart>
+      ) : (
+        <>
+          <PieChart width={400} height={500}>
+            <Pie
+              data={data2}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              label={renderCustomizedLabel}
+              outerRadius={75}
+              fill="#8884d8"
+              dataKey="value"
+            >
+              {data2.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+            <Legend
+              width={150}
+              wrapperStyle={{
+                top: 20,
+                left: 280,
+                backgroundColor: "#f5f5f5",
+                border: "1px solid #d5d5d5",
+                borderRadius: 3,
+                lineHeight: "20px",
+              }}
+            />
+          </PieChart>
+        </>
+      )}
+      <SentimentStats responseData={responseData} />
     </ResponsiveContainer>
   );
 };
