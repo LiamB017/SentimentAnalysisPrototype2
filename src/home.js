@@ -90,6 +90,7 @@ const Home = () => {
         </Grid>
         <Grid item xs={8}></Grid>
         <Analytics responseData={responseData} />
+
       </Grid>
     </>
   );

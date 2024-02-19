@@ -67,7 +67,7 @@ def get_sentiment_analysis():
                                 sentiment = " Neutral"
                         print("Sentiment is", sentiment)
 
-                        return {"compound": vs['compound'], "sentiment": sentiment,  "topic": topic, "positive": vs['pos'],"neutral": vs['neu'], "negative":vs['neg'], "subreddit": subreddit_name, "post": post.title, "comments": len(post.comments), "url": post.url, "top_comment": comment.body, "top_comment_sentiment": vscomment,"top3comments": top_comments, "top3commentsdatetime": top_comments_datetime,"array": commentsarray, "post_image_url": post_image_url}
+                        return {"compound": vs['compound'], "sentiment": sentiment,  "topic": topic, "positive": vs['pos'],"neutral": vs['neu'], "negative":vs['neg'], "subreddit": subreddit_name, "post": post.title, "comments": len(post.comments), "url": post.url, "top_comment": comment.body, "top_comment_sentiment": vscomment,"top3comments": top_comments, "top3commentsdatetime": top_comments_datetime,"commentsarray": commentsarray, "post_image_url": post_image_url}
 
         # Return a response for 'GET' requests or other cases
         return {"message": "Invalid request"}

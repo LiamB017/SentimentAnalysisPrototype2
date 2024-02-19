@@ -2,8 +2,8 @@ import React from "react";
 import Piechart from "./Piechart";
 import Grid from "@mui/material/Grid";
 import TopComments from "./TopComments";
-import SentimentStats from "./SentimentStats";
 import Barchart from "./Barchart";
+import WordCloud from "./WordCloud";
 
 
 const Analytics = ({ responseData }) => {
@@ -22,6 +22,9 @@ const Analytics = ({ responseData }) => {
             <Grid item xs={6} my={10}>
               <Barchart responseData={responseData} />
             </Grid>
+              <Grid item xs={6} my={10}>
+                <WordCloud responseData={responseData} />
+              </Grid>
           </Grid>
         </>
       )}
