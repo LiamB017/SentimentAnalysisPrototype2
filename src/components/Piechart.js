@@ -63,7 +63,7 @@ const Piechart = ({ responseData }) => {
   };
 
   return (
-    <ResponsiveContainer width="40%" height="38%">
+    <ResponsiveContainer width="40%" height="40%">
       <Button
         type="submit"
         variant="contained"
@@ -74,7 +74,7 @@ const Piechart = ({ responseData }) => {
         {showSecondChart ? <p>Positive/Negative Chart</p> : <p>Neutral Chart</p>}
       </Button>
       {showSecondChart ? (
-        <PieChart width={400} height={500}>
+        <PieChart width={400} height={450}>
           <Pie
             data={data}
             cx="50%"
@@ -106,7 +106,7 @@ const Piechart = ({ responseData }) => {
         </PieChart>
       ) : (
         <>
-          <PieChart width={400} height={500}>
+          <PieChart width={330} height={260}>
             <Pie
               data={data2}
               cx="50%"
