@@ -31,7 +31,7 @@ const Home = () => {
           </Typography>
         </Grid>
 
-        <Grid item xs={12}>
+        <Grid item xs={12} sx={{ textAlign: "center", margin: "0 auto" }}>
           <SearchForm setResponseData={setResponseData} />
         </Grid>
 

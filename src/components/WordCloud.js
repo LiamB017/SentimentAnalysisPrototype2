@@ -99,6 +99,7 @@ const WordCloud = ({ responseData }) => {
     "herself",
     "it",
     "its",
+    "it's",
     "itself",
     "we",
     "us",

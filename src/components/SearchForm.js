@@ -79,7 +79,7 @@ const SearchForm = ({ setResponseData }) => {
   return (
     <>
       <Grid>
-        <Grid item xs={6} mx={45} my={5}>
+        <Grid item xs={6} mx={50} my={5}>
           <TextField
             fullWidth
             label="Subreddit"
@@ -92,7 +92,7 @@ const SearchForm = ({ setResponseData }) => {
           />
         </Grid>
         {/* Add space between the text fields */}
-        <Grid item xs={6} my={2} mx={45}>
+        <Grid item xs={6} my={2} mx={50}>
           <TextField
             fullWidth
             label="Topic"
