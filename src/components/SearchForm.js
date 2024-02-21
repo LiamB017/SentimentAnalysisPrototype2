@@ -104,13 +104,24 @@ const SearchForm = ({ setResponseData }) => {
             value={form.topic}
           />
         </Grid>
-        <Grid item xs={8} my={2} mx={65}>
+        <Grid item xs={8} my={2} mx={50}>
           <Button
             type="submit"
             variant="contained"
             color="primary"
             onClick={handleClick}
-            sx={{ mx: 20 }}
+            sx={{
+              mx: 38,
+              backgroundColor: "#20556f",
+              color: "#fff",
+              padding: "10px 20px",
+              borderRadius: "8px",
+              boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.2)",
+              transition: "background-color 0.3s, color 0.3s",
+              "&:hover": {
+                backgroundColor: "#163d4f",
+              },
+            }}
           >
             Submit
           </Button>
@@ -119,7 +130,7 @@ const SearchForm = ({ setResponseData }) => {
         </Grid>
         <Grid item xs={8} my={10} mx={85}>
           {" "}
-          {loading && <CircularProgress/>}{" "}
+          {loading && <CircularProgress />}{" "}
         </Grid>
       </Grid>
     </>

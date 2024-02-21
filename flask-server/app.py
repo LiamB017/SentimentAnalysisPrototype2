@@ -1,8 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+import nltk
+nltk.download('stopwords')
 import praw
-
+import nltk
+nltk.download('punkt')
 import datetime
+
+
 
 app = Flask(__name__)
 
@@ -61,6 +68,13 @@ def get_sentiment_analysis():
                         print("Top comment Sentiment ", vscomment['compound'])
                         print("Sentiment Score ", vs['compound'])
 
+                        stop_words = set(stopwords.words('english'))
+
+                        filtered_comments = ' '.join(commentsarray)
+                        filtered_comments_tokens = word_tokenize(filtered_comments)
+                        filtered_comments = ' '.join([word for word in filtered_comments_tokens if word.lower() not in stop_words])
+                        print("Filtered Comments: ", filtered_comments)
+
 
                         if vs['compound'] >= 0.05:
                                 sentiment = " largely Positive"
@@ -71,7 +85,7 @@ def get_sentiment_analysis():
                         print("Sentiment is", sentiment)
 
                         return {"compound": vs['compound'], "sentiment": sentiment,  "topic": topic, "positive": vs['pos'],"neutral": vs['neu'], "negative":vs['neg'], "subreddit": subreddit_name, "post": post.title, "comments": len(post.comments), "url": post.url, "top_comment": comment.body,
-                        "top_comment_sentiment": vscomment,"top3comments": top_comments, "top3commentsdatetime": top_comments_datetime,"commentsarray": commentsarray, "post_image_url": post_image_url, "commentsdatetime": comments_datetime}
+                        "top_comment_sentiment": vscomment,"top3comments": top_comments, "top3commentsdatetime": top_comments_datetime,"commentsarray": commentsarray, "post_image_url": post_image_url, "commentsdatetime": comments_datetime, "filtered comments": filtered_comments}
 
         # Return a response for 'GET' requests or other cases
         return {"message": "Invalid request"}

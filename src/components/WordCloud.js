@@ -1,7 +1,6 @@
 
 
 import React from 'react';
-import { Typography } from '@mui/material';
 import ReactWordcloud from 'react-wordcloud';
 
 const WordCloud = ({ responseData }) => {

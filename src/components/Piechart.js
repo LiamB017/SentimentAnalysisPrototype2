@@ -67,11 +67,25 @@ const Piechart = ({ responseData }) => {
       <Button
         type="submit"
         variant="contained"
-        color="primary"
-        sx={{ mx: 20 }}
+        sx={{
+          mx: 38,
+          backgroundColor: "#20556f",
+          color: "#fff",
+          padding: "10px 20px",
+          borderRadius: "8px",
+          boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.2)",
+          transition: "background-color 0.3s, color 0.3s",
+          "&:hover": {
+            backgroundColor: "#163d4f",
+          },
+        }}
         onClick={handleClick}
       >
-        {showSecondChart ? <p>Positive/Negative Chart</p> : <p>Neutral Chart</p>}
+        {showSecondChart ? (
+          <p>Pos/Neg Chart</p>
+        ) : (
+          <p>Neutral Chart</p>
+        )}
       </Button>
       {showSecondChart ? (
         <PieChart width={400} height={450}>

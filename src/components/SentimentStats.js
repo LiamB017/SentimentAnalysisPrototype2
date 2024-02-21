@@ -26,7 +26,7 @@ const SentimentStats = ({ responseData }) => {
                     backgroundColor: "#f5f5f5",
                     borderRadius: 2,
                     padding: 2,
-                    mx: 2,
+                    mx: 3,
                   }}
                 >
                   <Typography
@@ -45,7 +45,7 @@ const SentimentStats = ({ responseData }) => {
                     backgroundColor: "#f5f5f5",
                     borderRadius: 2,
                     padding: 2,
-                    mx: 2,
+                    mx: 3,
                   }}
                 >
                   <Typography
@@ -64,7 +64,7 @@ const SentimentStats = ({ responseData }) => {
                     backgroundColor: "#f5f5f5",
                     borderRadius: 2,
                     padding: 2,
-                    mx: 2,
+                    mx: 3,
                   }}
                 >
                   <Typography

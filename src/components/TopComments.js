@@ -13,13 +13,14 @@ const TopComments = ({ responseData }) => {
       {responseData && (
         // ...
 
-        <Grid item xs={8}>
+        <Grid item xs={10} sx={{ justifyContent: "flex-end" }}>
           <Box
             sx={{
               border: "1px solid #000",
               padding: "1rem",
               borderRadius: "6px",
               backgroundColor: "#20556f",
+              marginLeft: "12rem",
             }}
           >
             <div>
@@ -44,14 +45,15 @@ const TopComments = ({ responseData }) => {
                 <Typography variant="h6" color="#20556f" fontWeight="Bold">
                   Top Comment 1
                 </Typography>{" "}
-                <Typography>{responseData.top3commentsdatetime[0]}</Typography>
+                <Typography sx={{ fontWeight: "bold" }}>
+                  {responseData.top3commentsdatetime[0]}
+                </Typography>
                 <Typography>
                   {responseData.top3comments[0].substring(0, 200)}
                 </Typography>
               </Box>
             </div>
             <div>
-
               <Box
                 sx={{
                   backgroundColor: "#fff",
@@ -64,14 +66,15 @@ const TopComments = ({ responseData }) => {
                 <Typography variant="h6" color="#20556f" fontWeight="Bold">
                   Top Comment 2
                 </Typography>{" "}
-                <Typography>{responseData.top3commentsdatetime[1]}</Typography>
+                <Typography sx={{ fontWeight: "bold" }}>
+                  {responseData.top3commentsdatetime[1]}
+                </Typography>
                 <Typography>
                   {responseData.top3comments[1].substring(0, 200)}
                 </Typography>
               </Box>
             </div>
             <div>
-
               <Box
                 sx={{
                   backgroundColor: "#fff",
@@ -84,7 +87,9 @@ const TopComments = ({ responseData }) => {
                 <Typography variant="h6" color="#20556f" fontWeight="Bold">
                   Top Comment 3
                 </Typography>{" "}
-                <Typography>{responseData.top3commentsdatetime[2]}</Typography>
+                <Typography sx={{ fontWeight: "bold" }}>
+                  {responseData.top3commentsdatetime[2]}
+                </Typography>
                 <Typography>
                   {responseData.top3comments[2].substring(0, 205) + "..."}
                 </Typography>

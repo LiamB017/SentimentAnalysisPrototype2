@@ -23,11 +23,11 @@ const Home = () => {
           <Typography
             variant="h2"
             fontWeight="bolder"
-            color="black"
+            color="#20556f"
             component="div"
             sx={{ textAlign: "center" }}
           >
-            home page
+            Sentiment Analyzer
           </Typography>
         </Grid>
 
