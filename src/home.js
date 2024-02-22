@@ -43,7 +43,7 @@ const Home = () => {
         >
           {responseData && (
             <>
-              <Grid item xs={4}>
+              <Grid item xs={10}>
                 <Box
                   sx={{
                     border: "1px solid #000",

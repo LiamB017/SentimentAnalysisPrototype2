@@ -4,35 +4,39 @@ import { ResponsiveContainer, AreaChart, XAxis, YAxis, Area } from "recharts";
 const Timechart = ({ responseData }) => {
   console.log("Timechart has responsedata", responseData);
 
-const timeRangeData = [
-  {
-    start: new Date("Mon, 05 Feb 2024 16:23:59 GMT"),
-    end: new Date("Mon, 06 Feb 2024 17:17:02 GMT"),
-  },
-  // Add more time range entries as needed
-];
+  //  const seventeenthDates = responseData.commentsdatetime.filter(dateString => {
+  //   const date = new Date(dateString);
+  //   return date.getDate() === 17;
+  //  });
+
+  //  const eighteenthDates = responseData.commentsdatetime.filter(dateString => {
+  //   const date = new Date(dateString);
+  //   return date.getDate() === 18;
+  //  }
+  //   );
+  //  const numberofSeventeenthDates = seventeenthDates.length;
+  //  const numberofEighteenthDates = eighteenthDates.length;
+
+  //  console.log("Number of 18th dates:", numberofSeventeenthDates)
+  //  console.log("Number of 17th dates:", numberofEighteenthDates)
+
+  const dateCounts = {};
+
+  // Count the occurrences of each date
+  responseData.commentsdatetime.forEach((dateString) => {
+    const date = new Date(dateString);
+    const formattedDate = `${date.getFullYear()}-${
+      date.getMonth() + 1
+    }-${date.getDate()}`; // Format date as YYYY-MM-DD
+    dateCounts[formattedDate] = (dateCounts[formattedDate] || 0) + 1;
+  });
+
+  // Log the counts for each date
+  Object.keys(dateCounts).forEach((date) => {
+    console.log(`${date}: ${dateCounts[date]} occurrences`);
+  });
 
 
-  return (
-    <ResponsiveContainer width="100%" height={200}>
-      <AreaChart data={timeRangeData}>
-        <XAxis
-          dataKey="start"
-          type="number"
-          scale="time"
-          domain={["auto", "auto"]}
-        />
-        <YAxis />
-        <Area
-          type="linear"
-          dataKey="end"
-          stroke="#8884d8"
-          fill="#8884d8"
-          fillOpacity={0.3}
-        />
-      </AreaChart>
-    </ResponsiveContainer>
-  );
 };
 
   export default Timechart;
