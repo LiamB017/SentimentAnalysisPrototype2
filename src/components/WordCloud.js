@@ -123,34 +123,34 @@ const WordCloud = ({ responseData }) => {
     "because",
     "only",
     "some",
-  ];
+    ];
 
-  const wordFreq = (texts) => {
-    const words = texts
-      .join(" ")
-      .replace(/\./g, "")
-      .split(/\s/)
-      .filter(
-        (word) => word.length > 3 && !stopWords.includes(word.toLowerCase())
-      );
+    const wordFreq = (texts) => {
+      const words = texts
+        .join(" ")
+        .replace(/\./g, "")
+        .split(/\s/)
+        .filter(
+          (word) => word.length > 3 && !stopWords.includes(word.toLowerCase())
+        );
 
-    const freqMap = {};
+      const freqMap = {};
 
-    for (const w of words) {
-      if (!freqMap[w]) freqMap[w] = 0;
-      freqMap[w] += 1;
-    }
-    return Object.keys(freqMap).map((word) => ({
-      text: word,
-      value: freqMap[word],
-    }));
-  };
+      for (const w of words) {
+        if (!freqMap[w]) freqMap[w] = 0;
+        freqMap[w] += 1;
+      }
+      return Object.keys(freqMap).map((word) => ({
+        text: word,
+        value: freqMap[word],
+      }));
+    };
 
-  const wordsFromComments = wordFreq(responseData.commentsarray);
+    const wordsFromComments = wordFreq(responseData.commentsarray);
 
-  console.log(wordsFromComments, "This is wordsFromComments");
+    console.log(wordsFromComments, "This is wordsFromComments");
 
-  return <ReactWordcloud words={wordsFromComments} />;
+  return <ReactWordcloud words={wordsFromComments} style={{ marginRight: '1000px', width:'600px'}} /> // Adjust the value as needed />;
 };
 
 export default WordCloud;
