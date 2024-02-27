@@ -4,6 +4,11 @@ import ReactWordcloud from "react-wordcloud";
 
 const WordCloud = ({ responseData }) => {
   console.log(responseData.commentsarray, "WordCloud has responsedata");
+    console.log(
+      responseData.filtered_commentsarray,
+      "WordCloud has filtered_commentsarray"
+    );
+
 
   const stopWords = [
     "the",
@@ -130,9 +135,7 @@ const WordCloud = ({ responseData }) => {
         .join(" ")
         .replace(/\./g, "")
         .split(/\s/)
-        .filter(
-          (word) => word.length > 3 && !stopWords.includes(word.toLowerCase())
-        );
+        .filter((word) => word.length > 3);
 
       const freqMap = {};
 
@@ -146,7 +149,8 @@ const WordCloud = ({ responseData }) => {
       }));
     };
 
-    const wordsFromComments = wordFreq(responseData.commentsarray);
+
+    const wordsFromComments = wordFreq(responseData.filtered_commentsarray);
 
     console.log(wordsFromComments, "This is wordsFromComments");
 

@@ -19,6 +19,19 @@ reddit = praw.Reddit(
         user_agent="redditdev sentiment analysis",
         )
 
+def load_stopwords():
+    stopwords_file = open("gist_stopwords.txt", "r")
+    try:
+        content = stopwords_file.read()
+        stopwords_list = content.split(",")
+    finally:
+        stopwords_file.close()
+    return set(stopwords_list)
+
+stop_words = load_stopwords()
+
+print(stop_words)
+
 @app.route('/sentiment', methods=['POST'])
 def get_sentiment_analysis():
 
@@ -27,7 +40,7 @@ def get_sentiment_analysis():
                 subreddit_name = request.json.get('subreddit', '')
                 subreddit = reddit.subreddit(subreddit_name) if subreddit_name else None
                 if topic and subreddit:
-                        searched_posts = subreddit.search(topic, sort='relevant', limit=1)
+                        searched_posts = subreddit.search(topic, sort='hot', limit=1)
 
                 for post in searched_posts:
                         print(post.title)
@@ -43,6 +56,7 @@ def get_sentiment_analysis():
                                         comments_datetime.append(datetime.datetime.fromtimestamp(comment.created_utc))
                                         print("Comment datetime:", datetime.datetime.fromtimestamp(comment.created_utc))
                                 commentsarray = [comment.body for comment in post.comments.list()]
+                                filtered_commentsarray = [' '.join([word for word in word_tokenize(comment) if word.lower() not in stop_words]) for comment in commentsarray]
 
                         top_comments = []
                         top_comments_datetime = []
@@ -54,6 +68,8 @@ def get_sentiment_analysis():
 
                         analyzer = SentimentIntensityAnalyzer()
                         vscomment = analyzer.polarity_scores(comment.body)
+
+
 
                         print(commentsarray)
 
@@ -71,7 +87,6 @@ def get_sentiment_analysis():
 
 
 
-
                         if vs['compound'] >= 0.05:
                                 sentiment = " largely Positive"
                         elif vs['compound'] <= -0.05:
@@ -81,7 +96,8 @@ def get_sentiment_analysis():
                         print("Sentiment is", sentiment)
 
                         return {"compound": vs['compound'], "sentiment": sentiment,  "topic": topic, "positive": vs['pos'],"neutral": vs['neu'], "negative":vs['neg'], "subreddit": subreddit_name, "post": post.title, "comments": len(post.comments), "url": post.url, "top_comment": comment.body,
-                        "top_comment_sentiment": vscomment,"top3comments": top_comments, "top3commentsdatetime": top_comments_datetime,"commentsarray": commentsarray, "post_image_url": post_image_url, "commentsdatetime": comments_datetime,}
+                        "top_comment_sentiment": vscomment,"top3comments": top_comments, "top3commentsdatetime": top_comments_datetime,"commentsarray": commentsarray, "post_image_url": post_image_url, "commentsdatetime": comments_datetime,"filtered_commentsarray": filtered_commentsarray,
+}
 
         # Return a response for 'GET' requests or other cases
         return {"message": "Invalid request"}
