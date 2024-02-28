@@ -73,6 +73,7 @@ const Piechart = ({ responseData }) => {
           color: "#fff",
           padding: "10px 20px",
           borderRadius: "8px",
+          fontWeight: "bold",
           boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.2)",
           transition: "background-color 0.3s, color 0.3s",
           "&:hover": {
@@ -81,11 +82,7 @@ const Piechart = ({ responseData }) => {
         }}
         onClick={handleClick}
       >
-        {showSecondChart ? (
-          <p>Pos/Neg Chart</p>
-        ) : (
-          <p>Neutral Chart</p>
-        )}
+        {showSecondChart ? <p>Pos/Neg Chart</p> : <p>Neutral Chart</p>}
       </Button>
       {showSecondChart ? (
         <PieChart width={400} height={450}>

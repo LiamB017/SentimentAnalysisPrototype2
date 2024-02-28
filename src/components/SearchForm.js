@@ -116,6 +116,7 @@ const SearchForm = ({ setResponseData }) => {
               color: "#fff",
               padding: "10px 20px",
               borderRadius: "8px",
+              fontWeight: "bold",
               boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.2)",
               transition: "background-color 0.3s, color 0.3s",
               "&:hover": {

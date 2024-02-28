@@ -63,7 +63,7 @@ const firstDateCount = dateCounts[firstDate];
 
  return (
    <LineChart
-     width={790}
+     width={980}
      height={500}
      data={data}
      margin={{
@@ -81,6 +81,7 @@ const firstDateCount = dateCounts[firstDate];
        type="monotone"
        dataKey="commentCount"
        stroke="#20556f"
+       strokeWidth={7}
        activeDot={{ r: 8 }}
      />
    </LineChart>

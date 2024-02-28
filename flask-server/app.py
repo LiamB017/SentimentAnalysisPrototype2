@@ -60,11 +60,15 @@ def get_sentiment_analysis():
 
                         top_comments = []
                         top_comments_datetime = []
+                        top_comments_score = []
                         for comment in post.comments[:3]:
                            if isinstance(comment, praw.models.Comment):
                             top_comments.append(comment.body)
                             top_comments_datetime.append(datetime.datetime.fromtimestamp(comment.created_utc))
+                            top_comments_score.append(comment.score)
                             print("3 TOP COMMENTS: ", comment.body)
+                            print("3 Top comments score: ", comment.score)
+
 
                         analyzer = SentimentIntensityAnalyzer()
                         vscomment = analyzer.polarity_scores(comment.body)
@@ -95,9 +99,27 @@ def get_sentiment_analysis():
                                 sentiment = " Neutral"
                         print("Sentiment is", sentiment)
 
-                        return {"compound": vs['compound'], "sentiment": sentiment,  "topic": topic, "positive": vs['pos'],"neutral": vs['neu'], "negative":vs['neg'], "subreddit": subreddit_name, "post": post.title, "comments": len(post.comments), "url": post.url, "top_comment": comment.body,
-                        "top_comment_sentiment": vscomment,"top3comments": top_comments, "top3commentsdatetime": top_comments_datetime,"commentsarray": commentsarray, "post_image_url": post_image_url, "commentsdatetime": comments_datetime,"filtered_commentsarray": filtered_commentsarray,
-}
+                        return {
+                                "compound": vs['compound'],
+                                "sentiment": sentiment,
+                                "topic": topic,
+                                "positive": vs['pos'],
+                                "neutral": vs['neu'],
+                                "negative": vs['neg'],
+                                "subreddit": subreddit_name,
+                                "post": post.title,
+                                "comments": len(post.comments),
+                                "url": post.url,
+                                "top_comment": comment.body,
+                                "top_comment_sentiment": vscomment,
+                                "top3comments": top_comments,
+                                "top3commentsdatetime": top_comments_datetime,
+                                "commentsarray": commentsarray,
+                                "post_image_url": post_image_url,
+                                "commentsdatetime": comments_datetime,
+                                "topcommentsscore": top_comments_score,
+                                "filtered_commentsarray": filtered_commentsarray
+                        }
 
         # Return a response for 'GET' requests or other cases
         return {"message": "Invalid request"}
