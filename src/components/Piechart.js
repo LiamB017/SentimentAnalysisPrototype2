@@ -85,11 +85,11 @@ const Piechart = ({ responseData }) => {
         {showSecondChart ? <p>Pos/Neg Chart</p> : <p>Neutral Chart</p>}
       </Button>
       {showSecondChart ? (
-        <PieChart width={400} height={450}>
+        <PieChart width={200} height={200}>
           <Pie
             data={data}
-            cx="50%"
-            cy="50%"
+            cx="32%"
+            cy="65%"
             labelLine={false}
             label={renderCustomizedLabel}
             outerRadius={75}
@@ -117,7 +117,7 @@ const Piechart = ({ responseData }) => {
         </PieChart>
       ) : (
         <>
-          <PieChart width={330} height={260}>
+          <PieChart width={300} height={260}>
             <Pie
               data={data2}
               cx="50%"
