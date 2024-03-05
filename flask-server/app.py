@@ -40,7 +40,7 @@ def get_sentiment_analysis():
                 subreddit_name = request.json.get('subreddit', '')
                 subreddit = reddit.subreddit(subreddit_name) if subreddit_name else None
                 if topic and subreddit:
-                        searched_posts = subreddit.search(topic, sort='hot', limit=1)
+                        searched_posts = subreddit.search(topic, sort='relevant', limit=1)
 
                 for post in searched_posts:
                         print(post.title)

@@ -11,7 +11,7 @@ const Analytics = ({ responseData }) => {
     <>
       {responseData && (
         <>
-          <Grid container spacing={0}>
+          <Grid container spacing={6}>
             <Grid item xs={6} my={10}>
               <TopComments responseData={responseData} />
             </Grid>

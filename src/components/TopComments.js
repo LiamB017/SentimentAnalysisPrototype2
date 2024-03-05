@@ -14,11 +14,10 @@ import {
 
 
 const TopComments = ({ responseData }) => {
-  // Remove the useState for responseData here
   console.log(responseData, "TopComments has responseData");
 
 
-  const [showTopComments, setShowTopComments] = useState(false);
+  const [showTopComments, setShowTopComments] = useState(true);
 
   const toggleView = () => {
     setShowTopComments(!showTopComments);
@@ -43,9 +42,9 @@ const TopComments = ({ responseData }) => {
               sx={{
                 backgroundColor: "#20556f",
                 color: "#fff",
-                display: "flex", // Add flex display
-                justifyContent: "space-between", // Add space between items
-                alignItems: "center", // Center items vertically
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
               }}
             >
               {" "}

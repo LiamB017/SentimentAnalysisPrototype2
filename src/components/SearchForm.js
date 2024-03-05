@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -9,8 +9,9 @@ const SearchForm = ({ setResponseData }) => {
     subreddit: "ireland", // Default subreddit value
     topic: "bruton", // Default topic value
   });
+
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false); // Track loading state
+  const [loading, setLoading] = useState(false);
 
   const handleForm = (e) => {
     setForm((prevState) => ({
@@ -78,7 +79,7 @@ const SearchForm = ({ setResponseData }) => {
 
   return (
     <>
-      <Grid>
+      <Grid container justifyContent="center" alignItems="center">
         <Grid item xs={6} mx={50} my={5}>
           <TextField
             fullWidth
@@ -91,7 +92,6 @@ const SearchForm = ({ setResponseData }) => {
             value={form.subreddit}
           />
         </Grid>
-        {/* Add space between the text fields */}
         <Grid item xs={6} my={2} mx={50}>
           <TextField
             fullWidth
@@ -126,7 +126,6 @@ const SearchForm = ({ setResponseData }) => {
           >
             Submit
           </Button>
-
           {/* Render ActivityIndicator when loading */}
         </Grid>
         <Grid item xs={8} my={10} mx={85}>

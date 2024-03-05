@@ -47,7 +47,6 @@ const firstDate = String(Object.keys(dateCounts)[0]);
   const secondDate = String(Object.keys(dateCounts)[1]);
 
 
-
   const thirdDate = String(Object.keys(dateCounts)[2]);
 
 
@@ -63,7 +62,7 @@ const firstDateCount = dateCounts[firstDate];
 
  return (
    <LineChart
-     width={980}
+     width={850}
      height={500}
      data={data}
      margin={{

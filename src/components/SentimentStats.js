@@ -1,5 +1,4 @@
 import React from "react";
-import Piechart from "./Piechart";
 import Grid from "@mui/material/Grid";
 import { Box } from "@mui/material";
 import { Typography } from "@mui/material";
