@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import SearchForm from "./components/SearchForm.js";
 import Analytics from "./components/Analytics.js";
 import { Box } from "@mui/material";
+import SearchResults from "./components/SearchResults.js";
 
 const Home = () => {
   const [responseData, setResponseData] = useState(null);
@@ -35,6 +36,9 @@ const Home = () => {
           <SearchForm setResponseData={setResponseData} />
         </Grid>
 
+        <Grid item xs={6}>
+          <SearchResults responseData={responseData} />
+        </Grid>
         <Grid
           container
           justifyContent="center"
@@ -63,19 +67,21 @@ const Home = () => {
                   <Typography
                     color="white"
                     component="div"
-                    sx={{ textAlign: "center", fontWeight: "bolder", marginTop: "1rem" }}
+                    sx={{
+                      textAlign: "center",
+                      fontWeight: "bolder",
+                      marginTop: "1rem",
+                    }}
                   >
-                    <a href={responseData.url} style={{ color: "white" }}>{responseData.url}</a>
+                    <a href={responseData.url} style={{ color: "white" }}>
+                      {responseData.url}
+                    </a>
                   </Typography>
                 </Box>
               </Grid>
-
-</>
-
-
-
+            </>
           )}
-</Grid>
+        </Grid>
 
         <Grid item xs={8}>
           <Typography
@@ -90,7 +96,6 @@ const Home = () => {
         </Grid>
         <Grid item xs={8}></Grid>
         <Analytics responseData={responseData} />
-
       </Grid>
     </>
   );
