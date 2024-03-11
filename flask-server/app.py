@@ -142,7 +142,7 @@ def perform_sentiment_analysis():
                                        print(comments)
 
           return {
-
+            "commentsarray": comments,
 
           }
 

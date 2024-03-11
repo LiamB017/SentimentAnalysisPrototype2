@@ -4,20 +4,20 @@ import Grid from "@mui/material/Grid";
 import TopComments from "./TopComments";
 import WordCloud from "./WordCloud";
 import Timechart from "./Timechart";
-import SearchResults from "./SearchResults";
 
-const Analytics = ({ responseData }) => {
+
+const Analytics = ({ analyticsData }) => {
+  console.log(analyticsData, "Analytics has responseData");
   return (
     <>
-      {responseData && (
+      {analyticsData && (
         <>
-
           <Grid container spacing={6}>
-            {/* <Grid item xs={6} my={10}>
-              <TopComments responseData={responseData} />
+            <Grid item xs={6} my={10}>
+              <TopComments analyticsData={analyticsData} />
             </Grid>
 
-            <Grid item xs={6} my={10}>
+            {/* <Grid item xs={6} my={10}>
               <Piechart responseData={responseData} />
             </Grid>
             <Grid item xs={6} my={10}>
@@ -25,7 +25,7 @@ const Analytics = ({ responseData }) => {
             </Grid>
             <Grid item xs={6} my={10}>
               <WordCloud responseData={responseData} />
-            </Grid> */}
+            </Grid>  */}
           </Grid>
         </>
       )}

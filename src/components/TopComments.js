@@ -13,8 +13,8 @@ import {
 } from "recharts";
 
 
-const TopComments = ({ responseData }) => {
-  console.log(responseData, "TopComments has responseData");
+const TopComments = ({ data }) => {
+  console.log(data, "TopComments has responseData");
 
 
   const [showTopComments, setShowTopComments] = useState(true);
@@ -25,7 +25,7 @@ const TopComments = ({ responseData }) => {
 
   return (
     <div>
-      {responseData && (
+      {data && (
         // ...
 
         <Grid item xs={10} sx={{ justifyContent: "flex-end" }}>
@@ -84,12 +84,12 @@ const TopComments = ({ responseData }) => {
                   <Typography variant="h6" color="#20556f" fontWeight="Bold">
                     Top Comment 1
                   </Typography>{" "}
-                  <Typography sx={{ fontWeight: "bold" }}>
+                  {/* <Typography sx={{ fontWeight: "bold" }}>
                     {responseData.top3commentsdatetime[0]}
                   </Typography>
                   <Typography>
                     {responseData.top3comments[0].substring(0, 200)}
-                  </Typography>
+                  </Typography> */}
                 </Box>
 
                 <Box
@@ -104,12 +104,12 @@ const TopComments = ({ responseData }) => {
                   <Typography variant="h6" color="#20556f" fontWeight="Bold">
                     Top Comment 2
                   </Typography>{" "}
-                  <Typography sx={{ fontWeight: "bold" }}>
+                  {/* <Typography sx={{ fontWeight: "bold" }}>
                     {responseData.top3commentsdatetime[1]}
                   </Typography>
                   <Typography>
                     {responseData.top3comments[1].substring(0, 200)}
-                  </Typography>
+                  </Typography> */}
                 </Box>
 
                 <Box
@@ -124,12 +124,12 @@ const TopComments = ({ responseData }) => {
                   <Typography variant="h6" color="#20556f" fontWeight="Bold">
                     Top Comment 3
                   </Typography>{" "}
-                  <Typography sx={{ fontWeight: "bold" }}>
+                  {/* <Typography sx={{ fontWeight: "bold" }}>
                     {responseData.top3commentsdatetime[2]}
                   </Typography>
                   <Typography>
                     {responseData.top3comments[2].substring(0, 205) + "..."}
-                  </Typography>
+                  </Typography> */}
                 </Box>
               </>
             )}
@@ -137,7 +137,7 @@ const TopComments = ({ responseData }) => {
 
           {!showTopComments && (
             <ResponsiveContainer width="100%" height={460} mx={40}>
-              <BarChart
+              {/* <BarChart
                 data={[
                   {
                     name: "Top Comment 1",
@@ -164,7 +164,7 @@ const TopComments = ({ responseData }) => {
                 />
                 <Legend />
                 <Bar dataKey="Upvotes" fill="#20556f" />
-              </BarChart>
+              </BarChart> */}
             </ResponsiveContainer>
           )}
         </Grid>

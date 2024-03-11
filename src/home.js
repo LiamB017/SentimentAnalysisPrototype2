@@ -4,15 +4,57 @@ import React, { useState, useEffect } from "react";
 import SearchForm from "./components/SearchForm.js";
 import Analytics from "./components/Analytics.js";
 import { Box } from "@mui/material";
-import SearchResults from "./components/SearchResults.js";
+
 
 const Home = () => {
   const [responseData, setResponseData] = useState(null);
-
+  const [analyticsData, setAnalyticsData] = useState(null);
+  const [loading, setLoading] = useState(false);
+    const [errors, setErrors] = useState({});
   console.log(responseData, "home page has responseData");
+ console.log(analyticsData, "home page has analyticsData");
+
+   const handleClick = (title) => {
+     setLoading(true); // Start loading
+
+     fetch("/analyze_sentiment", {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify({
+         post_title: title,
+         subreddit: responseData.subreddit,
+       }),
+     })
+       .then((response) => response.json())
+       .then((analyticsData) => {
+         console.log("Response from /analyze_sentiment:", analyticsData);
+         setAnalyticsData(analyticsData);
+       })
+       .catch((err) => {
+         console.error(err);
+         console.log(err.response.data);
+         setErrors(err.response.data.errors);
+       })
+       .finally(() => {
+         setLoading(false); // Stop loading
+       });
+   };
 
   return (
     <>
+      <div>
+        {responseData && responseData.post_titles && (
+          <Grid container justifyContent="center" alignItems="center">
+            {responseData.post_titles.map((title, index) => (
+              <Grid item key={index} onClick={() => handleClick(title)}>
+                {index + 1}. {title}
+              </Grid>
+            ))}
+          </Grid>
+        )}
+      </div>
       <Grid
         container
         justifyContent="center"
@@ -36,16 +78,14 @@ const Home = () => {
           <SearchForm setResponseData={setResponseData} />
         </Grid>
 
-        <Grid item xs={6}>
-          <SearchResults responseData={responseData} />
-        </Grid>
-        <Grid
+
+        {/* <Grid
           container
           justifyContent="center"
           alignItems="center"
           flexDirection="row"
         >
-          {responseData && (
+          {response && (
             <>
               <Grid item xs={10}>
                 <Box
@@ -81,7 +121,7 @@ const Home = () => {
               </Grid>
             </>
           )}
-        </Grid>
+        </Grid> */}
 
         <Grid item xs={8}>
           <Typography
@@ -95,7 +135,7 @@ const Home = () => {
           </Typography>
         </Grid>
         <Grid item xs={8}></Grid>
-        <Analytics responseData={responseData} />
+        <Analytics analyticsData={analyticsData} />
       </Grid>
     </>
   );
