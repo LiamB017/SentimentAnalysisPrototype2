@@ -18,14 +18,14 @@ const Analytics = ({ analyticsData }) => {
             </Grid>
 
             {/* <Grid item xs={6} my={10}>
-              <Piechart responseData={responseData} />
-            </Grid>
-            <Grid item xs={6} my={10}>
+              <Piechart analyticsData={analyticsData} />
+            </Grid> */}
+            {/* <Grid item xs={6} my={10}>
               <Timechart responseData={responseData} />
             </Grid>
             <Grid item xs={6} my={10}>
               <WordCloud responseData={responseData} />
-            </Grid>  */}
+            </Grid>   */}
           </Grid>
         </>
       )}

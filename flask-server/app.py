@@ -38,7 +38,7 @@ def get_sentiment_analysis():
         subreddit_name = request.json.get('subreddit', '')
         subreddit = reddit.subreddit(subreddit_name) if subreddit_name else None
         if topic and subreddit:
-                        searched_posts = subreddit.search(topic, sort='relevant', limit=5)
+                        searched_posts = subreddit.search(topic, sort='hot', limit=5)
                         post_titles = [post.title for post in searched_posts]
 
                         print("Post titles: ", post_titles)
@@ -138,11 +138,50 @@ def perform_sentiment_analysis():
                                           post.comments.replace_more(limit=3)
                                           comments.extend([comment.body for comment in post.comments.list() if isinstance(comment, praw.models.Comment)])
 
-                                       print( searched_posts)
-                                       print(comments)
+                                          comments_datetime = []
+                                          for comment in post.comments.list():
+                                                  post.comments.replace_more(limit=3)
+                                                  if isinstance(comment, praw.models.Comment):
+                                                          comments_datetime.append(datetime.datetime.fromtimestamp(comment.created_utc))
+                                                          print("Comment datetime:", datetime.datetime.fromtimestamp(comment.created_utc))
+                                          commentsarray = [comment.body for comment in post.comments.list()]
+                                          filtered_commentsarray = [' '.join([word for word in word_tokenize(comment) if word.lower() not in stop_words]) for comment in commentsarray]
+
+                                          analyzer = SentimentIntensityAnalyzer()
+                                          vscomment = analyzer.polarity_scores(comment.body)
+                                          print(commentsarray)
+
+                                          analyzer = SentimentIntensityAnalyzer()
+                                          vs = analyzer.polarity_scores(' '.join(commentsarray))
+                                          if vs['compound'] >= 0.05:
+                                                  sentiment = " largely Positive"
+                                          elif vs['compound'] <= -0.05:
+                                                  sentiment = " largely Negative"
+                                          else:
+                                                  sentiment = " Neutral"
+                                          print("Sentiment is", sentiment)
+
+                                          top_comments = []
+                                          top_comments_datetime = []
+                                          top_comments_score = []
+                                          for comment in post.comments[:3]:
+                                                  if isinstance(comment, praw.models.Comment):
+                                                          top_comments.append(comment.body)
+                                                          top_comments_datetime.append(datetime.datetime.fromtimestamp(comment.created_utc))
+                                                          top_comments_score.append(comment.score)
+                                                          print("3 TOP COMMENTS: ", comment.body)
+                                                          print("3 Top comments score: ", comment.score)
+                                          print(searched_posts)
+                                          print(comments)
 
           return {
             "commentsarray": comments,
+            "top3comments": top_comments,
+           "topcommentsscore": top_comments_score,
+           "top3commentsdatetime": top_comments_datetime,
+           "commentsdatetime": comments_datetime,
+           "post": post_title,
+           "url": post.url,
 
           }
 

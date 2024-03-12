@@ -13,8 +13,8 @@ import {
 } from "recharts";
 
 
-const TopComments = ({ data }) => {
-  console.log(data, "TopComments has responseData");
+const TopComments = ({ analyticsData }) => {
+  console.log(analyticsData, "TopComments has responseData");
 
 
   const [showTopComments, setShowTopComments] = useState(true);
@@ -25,7 +25,7 @@ const TopComments = ({ data }) => {
 
   return (
     <div>
-      {data && (
+      {analyticsData && (
         // ...
 
         <Grid item xs={10} sx={{ justifyContent: "flex-end" }}>
@@ -84,12 +84,12 @@ const TopComments = ({ data }) => {
                   <Typography variant="h6" color="#20556f" fontWeight="Bold">
                     Top Comment 1
                   </Typography>{" "}
-                  {/* <Typography sx={{ fontWeight: "bold" }}>
-                    {responseData.top3commentsdatetime[0]}
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    {analyticsData.top3commentsdatetime[0]}
                   </Typography>
                   <Typography>
-                    {responseData.top3comments[0].substring(0, 200)}
-                  </Typography> */}
+                    {analyticsData.top3comments[0].substring(0, 200)}
+                  </Typography>
                 </Box>
 
                 <Box
@@ -104,12 +104,12 @@ const TopComments = ({ data }) => {
                   <Typography variant="h6" color="#20556f" fontWeight="Bold">
                     Top Comment 2
                   </Typography>{" "}
-                  {/* <Typography sx={{ fontWeight: "bold" }}>
-                    {responseData.top3commentsdatetime[1]}
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    {analyticsData.top3commentsdatetime[1]}
                   </Typography>
                   <Typography>
-                    {responseData.top3comments[1].substring(0, 200)}
-                  </Typography> */}
+                    {analyticsData.top3comments[1].substring(0, 200)}
+                  </Typography>
                 </Box>
 
                 <Box
@@ -124,12 +124,12 @@ const TopComments = ({ data }) => {
                   <Typography variant="h6" color="#20556f" fontWeight="Bold">
                     Top Comment 3
                   </Typography>{" "}
-                  {/* <Typography sx={{ fontWeight: "bold" }}>
-                    {responseData.top3commentsdatetime[2]}
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    {analyticsData.top3commentsdatetime[2]}
                   </Typography>
                   <Typography>
-                    {responseData.top3comments[2].substring(0, 205) + "..."}
-                  </Typography> */}
+                    {analyticsData.top3comments[2].substring(0, 205) + "..."}
+                  </Typography>
                 </Box>
               </>
             )}
@@ -137,19 +137,19 @@ const TopComments = ({ data }) => {
 
           {!showTopComments && (
             <ResponsiveContainer width="100%" height={460} mx={40}>
-              {/* <BarChart
+              <BarChart
                 data={[
                   {
                     name: "Top Comment 1",
-                    Upvotes: responseData.topcommentsscore[0],
+                    Upvotes: analyticsData.topcommentsscore[0],
                   },
                   {
                     name: "Top Comment 2",
-                    Upvotes: responseData.topcommentsscore[1],
+                    Upvotes: analyticsData.topcommentsscore[1],
                   },
                   {
                     name: "Top Comment 3",
-                    Upvotes: responseData.topcommentsscore[2],
+                    Upvotes: analyticsData.topcommentsscore[2],
                   },
                 ]}
                 margin={{ left: 110, top: 40 }}
@@ -164,7 +164,7 @@ const TopComments = ({ data }) => {
                 />
                 <Legend />
                 <Bar dataKey="Upvotes" fill="#20556f" />
-              </BarChart> */}
+              </BarChart>
             </ResponsiveContainer>
           )}
         </Grid>

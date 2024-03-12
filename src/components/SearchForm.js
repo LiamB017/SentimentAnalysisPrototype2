@@ -7,7 +7,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 const SearchForm = ({ setResponseData }) => {
   const [form, setForm] = useState({
     subreddit: "ireland", // Default subreddit value
-    topic: "bruton", // Default topic value
+    topic: "No Vote", // Default topic value
   });
 
   const [errors, setErrors] = useState({});
@@ -128,7 +128,7 @@ const SearchForm = ({ setResponseData }) => {
           </Button>
           {/* Render ActivityIndicator when loading */}
         </Grid>
-        <Grid item xs={8} my={10} mx={85}>
+        <Grid item xs={8} my={5} mx={85}>
           {" "}
           {loading && <CircularProgress />}{" "}
         </Grid>

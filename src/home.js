@@ -44,17 +44,6 @@ const Home = () => {
 
   return (
     <>
-      <div>
-        {responseData && responseData.post_titles && (
-          <Grid container justifyContent="center" alignItems="center">
-            {responseData.post_titles.map((title, index) => (
-              <Grid item key={index} onClick={() => handleClick(title)}>
-                {index + 1}. {title}
-              </Grid>
-            ))}
-          </Grid>
-        )}
-      </div>
       <Grid
         container
         justifyContent="center"
@@ -77,35 +66,73 @@ const Home = () => {
         <Grid item xs={12} sx={{ textAlign: "center", margin: "0 auto" }}>
           <SearchForm setResponseData={setResponseData} />
         </Grid>
+        {responseData && (
+          <Grid item xs={8}>
+            <Typography
+              variant="h5"
+              fontWeight="bolder"
+              color="#20556f"
+              component="div"
+              sx={{ textAlign: "center" }}
+            >
+              Top Search Results
+            </Typography>
+          </Grid>
+        )}
+        <Grid
+          container
+          justifyContent="center"
+          alignItems="center"
+          flexDirection="column" // Change flexDirection to "column" for vertical ordering
+          spacing={1}
+        >
+          {responseData &&
+            responseData.post_titles &&
+            responseData.post_titles.map((title, index) => (
+              <Grid
+                xs={8}
+                style={{
+                  marginTop: "10px",
+                  fontWeight: "bold",
+                  marginBottom: "20px",
+                  cursor: "pointer",
+                }}
+                item
+                key={index}
+                onClick={() => handleClick(title)} // Keep the onClick handler
+              >
+                <Typography style={{ fontWeight: "bold" }}>
+                  {" "}
+                  {index + 1}. {title}{" "}
+                </Typography>
+              </Grid>
 
-
-        {/* <Grid
+            ))}
+        </Grid>
+        <Grid
           container
           justifyContent="center"
           alignItems="center"
           flexDirection="row"
         >
-          {response && (
+          {analyticsData && (
             <>
-              <Grid item xs={10}>
+              <Grid item xs={10} style={{ marginTop: "20px" }}>
                 <Box
                   sx={{
-                    border: "1px solid #000",
                     padding: "1rem",
-                    borderRadius: "6px",
-                    backgroundColor: "#20556f",
                   }}
                 >
                   <Typography
-                    variant="h6"
-                    color="white"
+                    variant="h4"
+                    color="#20556f"
                     component="div"
                     sx={{ textAlign: "center", fontWeight: "bolder" }}
                   >
-                    {responseData.post}
+                    {analyticsData.post}
                   </Typography>
                   <Typography
-                    color="white"
+                    color="#20556f"
                     component="div"
                     sx={{
                       textAlign: "center",
@@ -113,28 +140,16 @@ const Home = () => {
                       marginTop: "1rem",
                     }}
                   >
-                    <a href={responseData.url} style={{ color: "white" }}>
-                      {responseData.url}
+                    <a href={responseData.url} style={{ color: "#20556f" }}>
+                      {analyticsData.url}
                     </a>
                   </Typography>
                 </Box>
               </Grid>
             </>
           )}
-        </Grid> */}
-
-        <Grid item xs={8}>
-          <Typography
-            variant="h2"
-            fontWeight="bolder"
-            color="black"
-            component="div"
-            sx={{ textAlign: "center" }}
-          >
-            <div></div>
-          </Typography>
         </Grid>
-        <Grid item xs={8}></Grid>
+
         <Analytics analyticsData={analyticsData} />
       </Grid>
     </>
