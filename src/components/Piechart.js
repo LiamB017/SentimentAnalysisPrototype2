@@ -5,34 +5,34 @@ import SentimentStats from "./SentimentStats";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 
-const Piechart = ({ responseData }) => {
-   const [showSecondChart, setShowSecondChart] = useState(false);
-  console.log(responseData, "Piechart has responsedata");
+const Piechart = ({ analyticsData }) => {
+  const [showSecondChart, setShowSecondChart] = useState(false);
+  console.log(analyticsData, "Piechart has responsedata");
 
   const handleClick = () => {
-     setShowSecondChart((prevShowSecondChart) => !prevShowSecondChart);
+    setShowSecondChart((prevShowSecondChart) => !prevShowSecondChart);
 
     console.log("Button clicked");
   };
 
   let data = null;
-  if (responseData) {
+  if (analyticsData) {
     data = [
-      { name: "Positive", value: responseData.positive },
-      { name: "Negative", value: responseData.negative },
-      { name: "Neutral", value: responseData.neutral },
+      { name: "Positive", value: analyticsData.positive },
+      { name: "Negative", value: analyticsData.negative },
+      { name: "Neutral", value: analyticsData.neutral },
     ];
   }
 
   let data2 = null;
-   if (responseData) {
-     data2 = [
-       { name: "Positive", value: responseData.positive },
-       { name: "Negative", value: responseData.negative }
-     ];
-   }
+  if (analyticsData) {
+    data2 = [
+      { name: "Positive", value: analyticsData.positive },
+      { name: "Negative", value: analyticsData.negative },
+    ];
+  }
 
-  console.log(data, "This is piechart data")
+  console.log(data, "This is piechart data");
 
   const COLORS = ["#ade2b1", "#e80022", "#1c78ac"];
 
@@ -149,7 +149,7 @@ const Piechart = ({ responseData }) => {
           </PieChart>
         </>
       )}
-      <SentimentStats responseData={responseData} />
+      <SentimentStats analyticsData={analyticsData} />
     </ResponsiveContainer>
   );
 };

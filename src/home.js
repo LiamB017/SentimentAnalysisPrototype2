@@ -106,7 +106,6 @@ const Home = () => {
                   {index + 1}. {title}{" "}
                 </Typography>
               </Grid>
-
             ))}
         </Grid>
         <Grid
@@ -140,7 +139,7 @@ const Home = () => {
                       marginTop: "1rem",
                     }}
                   >
-                    <a href={responseData.url} style={{ color: "#20556f" }}>
+                    <a href={analyticsData.url} style={{ color: "#20556f" }}>
                       {analyticsData.url}
                     </a>
                   </Typography>

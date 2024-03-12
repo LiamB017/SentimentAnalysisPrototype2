@@ -175,6 +175,10 @@ def perform_sentiment_analysis():
                                           print(comments)
 
           return {
+            "compound": vs['compound'],
+            "positive": vs['pos'],
+            "neutral": vs['neu'],
+            "negative": vs['neg'],
             "commentsarray": comments,
             "top3comments": top_comments,
            "topcommentsscore": top_comments_score,
@@ -182,7 +186,9 @@ def perform_sentiment_analysis():
            "commentsdatetime": comments_datetime,
            "post": post_title,
            "url": post.url,
-
+           "sentiment": sentiment,
+           "comments": len(post.comments),
+           "filtered_commentsarray": filtered_commentsarray,
           }
 
 

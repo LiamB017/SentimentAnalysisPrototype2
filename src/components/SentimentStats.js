@@ -3,13 +3,13 @@ import Grid from "@mui/material/Grid";
 import { Box } from "@mui/material";
 import { Typography } from "@mui/material";
 
-const SentimentStats = ({ responseData }) => {
+const SentimentStats = ({ analyticsData }) => {
   return (
     <>
-      {responseData && (
+      {analyticsData && (
         <>
           <Grid container spacing={2}>
-            <Grid item xs={24} >
+            <Grid item xs={24}>
               <Box
                 sx={{
                   display: "flex",
@@ -35,7 +35,7 @@ const SentimentStats = ({ responseData }) => {
                     component="div"
                     sx={{ textAlign: "center" }}
                   >
-                    Sentiment is {responseData.sentiment}
+                    Sentiment is {analyticsData.sentiment}
                   </Typography>
                 </Box>
 
@@ -54,7 +54,7 @@ const SentimentStats = ({ responseData }) => {
                     component="div"
                     sx={{ textAlign: "center" }}
                   >
-                    Compound Score is {responseData.compound}
+                    Compound Score is {analyticsData.compound}
                   </Typography>
                 </Box>
 
@@ -73,7 +73,7 @@ const SentimentStats = ({ responseData }) => {
                     component="div"
                     sx={{ textAlign: "center" }}
                   >
-                    Sentiment Analyzed from {responseData.comments} comments
+                    Sentiment Analyzed from {analyticsData.comments} comments
                   </Typography>
                 </Box>
               </Box>
