@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./home.js";
+import { ThemeProvider, createTheme } from "@mui/material";
 
+const theme = createTheme({
+  typography: {
+    fontFamily: "'Public Sans', sans-serif",
+  },
+});
 
 
 function App() {
@@ -9,12 +15,13 @@ function App() {
 
 
    return (
-     <Router>
-       <Routes>
-         <Route path="/" element={<Home />} />
-
-       </Routes>
-     </Router>
+     <ThemeProvider theme={theme}>
+       <Router>
+         <Routes>
+           <Route path="/" element={<Home />} />
+         </Routes>
+       </Router>
+     </ThemeProvider>
    );
 
 

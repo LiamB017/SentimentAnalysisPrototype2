@@ -137,7 +137,7 @@ def perform_sentiment_analysis():
                                           comments = []
                                           post.comments.replace_more(limit=3)
                                           comments.extend([comment.body for comment in post.comments.list() if isinstance(comment, praw.models.Comment)])
-
+                                          number_of_comments = len(comments)
                                           comments_datetime = []
                                           for comment in post.comments.list():
                                                   post.comments.replace_more(limit=3)
@@ -146,7 +146,7 @@ def perform_sentiment_analysis():
                                                           print("Comment datetime:", datetime.datetime.fromtimestamp(comment.created_utc))
                                           commentsarray = [comment.body for comment in post.comments.list()]
                                           filtered_commentsarray = [' '.join([word for word in word_tokenize(comment) if word.lower() not in stop_words]) for comment in commentsarray]
-
+                                          number_of_comments = len(comments)
                                           analyzer = SentimentIntensityAnalyzer()
                                           vscomment = analyzer.polarity_scores(comment.body)
                                           print(commentsarray)
@@ -174,6 +174,7 @@ def perform_sentiment_analysis():
                                           print(searched_posts)
                                           print(comments)
 
+
           return {
             "compound": vs['compound'],
             "positive": vs['pos'],
@@ -189,6 +190,7 @@ def perform_sentiment_analysis():
            "sentiment": sentiment,
            "comments": len(post.comments),
            "filtered_commentsarray": filtered_commentsarray,
+           "number_of_comments": number_of_comments,
           }
 
 

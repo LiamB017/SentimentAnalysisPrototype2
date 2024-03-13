@@ -31,16 +31,14 @@ const TopComments = ({ analyticsData }) => {
         <Grid item xs={10} sx={{ justifyContent: "flex-end" }}>
           <Box
             sx={{
-              border: "1px solid #000",
               padding: "1rem",
               borderRadius: "6px",
-              backgroundColor: "#20556f",
+              backgroundColor: "#fff",
               marginLeft: "12rem",
             }}
           >
             <Box
               sx={{
-                backgroundColor: "#20556f",
                 color: "#fff",
                 display: "flex",
                 justifyContent: "space-between",
@@ -48,21 +46,29 @@ const TopComments = ({ analyticsData }) => {
               }}
             >
               {" "}
-              <Typography variant="h5">Top comments</Typography>
+              <Typography
+                variant="h5"
+                color="#20556f"
+                style={{ fontWeight: 750 }}
+              >
+                Top comments
+              </Typography>
               <Button
                 onClick={toggleView}
                 variant="contained"
                 color="primary"
                 sx={{
-                  backgroundColor: "#fff",
-                  color: "#20556f",
+                  backgroundColor: "#20556f",
+                  color: "#fff",
                   padding: "10px 20px",
                   borderRadius: "8px",
                   fontWeight: "bold",
-                  boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.2)",
-                  transition: "background-color 0.3s, color 0.3s",
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)", // Adjusted shadow
+                  transition:
+                    "background-color 0.3s, color 0.3s, box-shadow 0.3s", // Include box-shadow in transition
                   "&:hover": {
-                    backgroundColor: "#e1ebf0",
+                    backgroundColor: "#163d4f",
+                    boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.5)", // Adjusted shadow on hover
                   },
                 }}
               >
@@ -74,7 +80,7 @@ const TopComments = ({ analyticsData }) => {
               <>
                 <Box
                   sx={{
-                    backgroundColor: "#fff",
+                    backgroundColor: "#f5f5f5",
                     borderRadius: "6px",
                     padding: "1rem",
                     margin: "1rem 0",
@@ -94,7 +100,7 @@ const TopComments = ({ analyticsData }) => {
 
                 <Box
                   sx={{
-                    backgroundColor: "#fff",
+                    backgroundColor: "#f5f5f5",
                     borderRadius: "6px",
                     padding: "1rem",
                     margin: "1rem 0",
@@ -114,7 +120,7 @@ const TopComments = ({ analyticsData }) => {
 
                 <Box
                   sx={{
-                    backgroundColor: "#fff",
+                    backgroundColor: "#f5f5f5",
                     borderRadius: "6px",
                     padding: "1rem",
                     margin: "1rem 0",

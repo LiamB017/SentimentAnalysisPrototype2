@@ -15,7 +15,7 @@ const SentimentStats = ({ analyticsData }) => {
                   display: "flex",
                   flexDirection: "row",
                   justifyContent: "space-between",
-                  backgroundColor: "#20556f",
+
                   borderRadius: 2,
                   padding: 2,
                 }}
@@ -26,12 +26,13 @@ const SentimentStats = ({ analyticsData }) => {
                     borderRadius: 2,
                     padding: 2,
                     mx: 3,
+                    color: "#20556f",
                   }}
                 >
                   <Typography
-                    fontSize={12}
+                    fontSize={16}
                     fontWeight="bolder"
-                    color="black"
+                    color="#20556f"
                     component="div"
                     sx={{ textAlign: "center" }}
                   >
@@ -48,9 +49,9 @@ const SentimentStats = ({ analyticsData }) => {
                   }}
                 >
                   <Typography
-                    fontSize={12}
+                    fontSize={16}
                     fontWeight="bolder"
-                    color="black"
+                    color="#20556f"
                     component="div"
                     sx={{ textAlign: "center" }}
                   >
@@ -67,13 +68,13 @@ const SentimentStats = ({ analyticsData }) => {
                   }}
                 >
                   <Typography
-                    fontSize={12}
+                    fontSize={16}
                     fontWeight="bolder"
-                    color="black"
+                    color="#20556f"
                     component="div"
                     sx={{ textAlign: "center" }}
                   >
-                    Sentiment Analyzed from {analyticsData.comments} comments
+                    Sentiment Analyzed from {analyticsData.number_of_comments} comments
                   </Typography>
                 </Box>
               </Box>

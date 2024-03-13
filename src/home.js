@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import SearchForm from "./components/SearchForm.js";
 import Analytics from "./components/Analytics.js";
 import { Box } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 
 
 const Home = () => {
@@ -148,7 +149,10 @@ const Home = () => {
             </>
           )}
         </Grid>
-
+        <Grid item xs={8} my={5} mx={105}>
+          {" "}
+          {loading && <CircularProgress />}{" "}
+        </Grid>
         <Analytics analyticsData={analyticsData} />
       </Grid>
     </>

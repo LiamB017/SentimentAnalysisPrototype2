@@ -55,12 +55,12 @@ const Timechart = ({ analyticsData }) => {
 
   return (
     <LineChart
-      width={850}
+      width={660}
       height={500}
       data={data}
       margin={{
         top: 5,
-        left: 135,
+        left: 140,
         bottom: 5,
       }}
     >
