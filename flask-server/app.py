@@ -165,12 +165,23 @@ def perform_sentiment_analysis():
                                           top_comments_datetime = []
                                           top_comments_score = []
                                           for comment in post.comments[:3]:
-                                                  if isinstance(comment, praw.models.Comment):
-                                                          top_comments.append(comment.body)
-                                                          top_comments_datetime.append(datetime.datetime.fromtimestamp(comment.created_utc))
-                                                          top_comments_score.append(comment.score)
-                                                          print("3 TOP COMMENTS: ", comment.body)
-                                                          print("3 Top comments score: ", comment.score)
+                                                if isinstance(comment, praw.models.Comment):
+                                                        top_comments.append(comment.body)
+                                                        top_comments_datetime.append(datetime.datetime.fromtimestamp(comment.created_utc))
+                                                        top_comments_score.append(comment.score)
+                                                        print("3 TOP COMMENTS: ", comment.body)
+                                                        print("3 Top comments score: ", comment.score)
+
+                                        #   top_comments_sentiment = []
+
+                                        #   for comment in post.comments[:3]:
+                                        #         if isinstance(comment, praw.models.Comment):
+                                        #                 vs = analyzer.polarity_scores(comment.body)
+                                        #                 top_comments_sentiment.append(vs)
+
+                                        #   for i, sentiment in enumerate(top_comments_sentiment, start=1):
+                                        #         print(f"Sentiment for Top Comment {i}: {sentiment}")
+
                                           print(searched_posts)
                                           print(comments)
 

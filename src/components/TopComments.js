@@ -26,7 +26,6 @@ const TopComments = ({ analyticsData }) => {
   return (
     <div>
       {analyticsData && (
-        // ...
 
         <Grid item xs={10} sx={{ justifyContent: "flex-end" }}>
           <Box
