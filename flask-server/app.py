@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
+
 from nltk.tokenize import word_tokenize
 import nltk
 nltk.download('stopwords')

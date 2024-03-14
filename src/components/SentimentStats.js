@@ -32,7 +32,7 @@ const SentimentStats = ({ analyticsData }) => {
                   <Typography
                     fontSize={16}
                     fontWeight="bolder"
-                    color="#20556f"
+                    color="black"
                     component="div"
                     sx={{ textAlign: "center" }}
                   >
@@ -51,7 +51,7 @@ const SentimentStats = ({ analyticsData }) => {
                   <Typography
                     fontSize={16}
                     fontWeight="bolder"
-                    color="#20556f"
+                    color="black"
                     component="div"
                     sx={{ textAlign: "center" }}
                   >
@@ -70,11 +70,12 @@ const SentimentStats = ({ analyticsData }) => {
                   <Typography
                     fontSize={16}
                     fontWeight="bolder"
-                    color="#20556f"
+                    color="black"
                     component="div"
                     sx={{ textAlign: "center" }}
                   >
-                    Sentiment Analyzed from {analyticsData.number_of_comments} comments
+                    Sentiment Analyzed from {analyticsData.number_of_comments}{" "}
+                    comments
                   </Typography>
                 </Box>
               </Box>

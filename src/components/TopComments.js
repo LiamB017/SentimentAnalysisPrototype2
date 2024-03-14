@@ -26,7 +26,6 @@ const TopComments = ({ analyticsData }) => {
   return (
     <div>
       {analyticsData && (
-
         <Grid item xs={10} sx={{ justifyContent: "flex-end" }}>
           <Box
             sx={{
@@ -82,17 +81,17 @@ const TopComments = ({ analyticsData }) => {
                     backgroundColor: "#f5f5f5",
                     borderRadius: "6px",
                     padding: "1rem",
-                    margin: "1rem 0",
+                    margin: "2rem 0",
                   }}
                 >
                   {" "}
                   <Typography variant="h6" color="#20556f" fontWeight="Bold">
                     Top Comment 1
                   </Typography>{" "}
-                  <Typography sx={{ fontWeight: "bold" }}>
+                  <Typography sx={{ fontWeight: "", fontSize: "14px" }}>
                     {analyticsData.top3commentsdatetime[0]}
                   </Typography>
-                  <Typography>
+                  <Typography sx={{ fontWeight: "bold" }}>
                     {analyticsData.top3comments[0].substring(0, 200)}
                   </Typography>
                 </Box>
@@ -102,17 +101,17 @@ const TopComments = ({ analyticsData }) => {
                     backgroundColor: "#f5f5f5",
                     borderRadius: "6px",
                     padding: "1rem",
-                    margin: "1rem 0",
+                    margin: "2rem 0",
                   }}
                 >
                   {" "}
                   <Typography variant="h6" color="#20556f" fontWeight="Bold">
                     Top Comment 2
                   </Typography>{" "}
-                  <Typography sx={{ fontWeight: "bold" }}>
+                  <Typography sx={{ fontWeight: "", fontSize: "14px" }}>
                     {analyticsData.top3commentsdatetime[1]}
                   </Typography>
-                  <Typography>
+                  <Typography sx={{ fontWeight: "bold" }}>
                     {analyticsData.top3comments[1].substring(0, 200)}
                   </Typography>
                 </Box>
@@ -122,17 +121,17 @@ const TopComments = ({ analyticsData }) => {
                     backgroundColor: "#f5f5f5",
                     borderRadius: "6px",
                     padding: "1rem",
-                    margin: "1rem 0",
+                    margin: "2rem 0",
                   }}
                 >
                   {" "}
                   <Typography variant="h6" color="#20556f" fontWeight="Bold">
                     Top Comment 3
                   </Typography>{" "}
-                  <Typography sx={{ fontWeight: "bold" }}>
+                  <Typography sx={{ fontWeight: "", fontSize: "14px" }}>
                     {analyticsData.top3commentsdatetime[2]}
                   </Typography>
-                  <Typography>
+                  <Typography sx={{ fontWeight: "bold" }}>
                     {analyticsData.top3comments[2].substring(0, 205) + "..."}
                   </Typography>
                 </Box>

@@ -148,11 +148,12 @@ const Home = () => {
               </Grid>
             </>
           )}
+          <Grid item xs={8} my={5} mx={200}>
+            {" "}
+            {loading && <CircularProgress />}{" "}
+          </Grid>
         </Grid>
-        <Grid item xs={8} my={5} mx={105}>
-          {" "}
-          {loading && <CircularProgress />}{" "}
-        </Grid>
+
         <Analytics analyticsData={analyticsData} />
       </Grid>
     </>
