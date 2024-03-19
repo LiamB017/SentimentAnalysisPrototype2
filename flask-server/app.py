@@ -145,12 +145,17 @@ def perform_sentiment_analysis():
                                                   if isinstance(comment, praw.models.Comment):
                                                           comments_datetime.append(datetime.datetime.fromtimestamp(comment.created_utc))
                                                           print("Comment datetime:", datetime.datetime.fromtimestamp(comment.created_utc))
+
+
+
                                           commentsarray = [comment.body for comment in post.comments.list()]
                                           filtered_commentsarray = [' '.join([word for word in word_tokenize(comment) if word.lower() not in stop_words]) for comment in commentsarray]
                                           number_of_comments = len(comments)
                                           analyzer = SentimentIntensityAnalyzer()
                                           vscomment = analyzer.polarity_scores(comment.body)
                                           print(commentsarray)
+
+
 
                                           analyzer = SentimentIntensityAnalyzer()
                                           vs = analyzer.polarity_scores(' '.join(commentsarray))
@@ -165,6 +170,7 @@ def perform_sentiment_analysis():
                                           top_comments = []
                                           top_comments_datetime = []
                                           top_comments_score = []
+                                          top_comments_sentiment = []
                                           for comment in post.comments[:3]:
                                                 if isinstance(comment, praw.models.Comment):
                                                         top_comments.append(comment.body)
@@ -172,6 +178,18 @@ def perform_sentiment_analysis():
                                                         top_comments_score.append(comment.score)
                                                         print("3 TOP COMMENTS: ", comment.body)
                                                         print("3 Top comments score: ", comment.score)
+
+                                                        sentiment_scores = analyzer.polarity_scores(comment.body)
+                                                        sentiment_score = sentiment_scores['compound']
+                                                        top_comments_sentiment.append(sentiment_score)
+
+
+
+
+
+
+
+                                                        print("Top 3 comments sentiment scores: ", top_comments_sentiment)
 
                                         #   top_comments_sentiment = []
 
@@ -203,6 +221,7 @@ def perform_sentiment_analysis():
            "comments": len(post.comments),
            "filtered_commentsarray": filtered_commentsarray,
            "number_of_comments": number_of_comments,
+           "top3comments_sentiment": top_comments_sentiment,
           }
 
 

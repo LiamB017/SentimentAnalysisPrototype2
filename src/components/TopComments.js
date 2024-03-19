@@ -15,6 +15,18 @@ import {
 
 const TopComments = ({ analyticsData }) => {
   console.log(analyticsData, "TopComments has responseData");
+  console.log(analyticsData.top3comments_sentiment)
+
+
+  const getBorderColor = (sentiment) => {
+    if (sentiment > 0) {
+      return "#00C853"; // Green color for positive sentiment
+    } else if (sentiment < 0) {
+      return "#FF1744"; // Red color for negative sentiment
+    } else {
+      return "#bdbdbd"; // Gray color for neutral sentiment
+    }
+  };
 
 
   const [showTopComments, setShowTopComments] = useState(true);
@@ -82,16 +94,23 @@ const TopComments = ({ analyticsData }) => {
                     borderRadius: "6px",
                     padding: "1rem",
                     margin: "2rem 0",
+                    borderLeft: `4px solid ${getBorderColor(
+                      analyticsData.top3comments_sentiment[0]
+                    )}`,
                   }}
                 >
                   {" "}
-                  <Typography variant="h6" color="#20556f" fontWeight="Bold">
-                    Top Comment 1
-                  </Typography>{" "}
-                  <Typography sx={{ fontWeight: "", fontSize: "14px" }}>
-                    {analyticsData.top3commentsdatetime[0]}
-                  </Typography>
-                  <Typography sx={{ fontWeight: "bold" }}>
+                  <Box
+                    sx={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <Typography variant="h6" color="#20556f" fontWeight="Bold">
+                      Top Comment 1
+                    </Typography>{" "}
+                    <Typography sx={{ fontWeight: "", fontSize: "14px" }}>
+                      {analyticsData.top3commentsdatetime[0]}
+                    </Typography>
+                  </Box>
+                  <Typography sx={{ fontWeight: "" }}>
                     {analyticsData.top3comments[0].substring(0, 200)}
                   </Typography>
                 </Box>
@@ -102,16 +121,23 @@ const TopComments = ({ analyticsData }) => {
                     borderRadius: "6px",
                     padding: "1rem",
                     margin: "2rem 0",
+                    borderLeft: `4px solid ${getBorderColor(
+                      analyticsData.top3comments_sentiment[1]
+                    )}`,
                   }}
                 >
                   {" "}
-                  <Typography variant="h6" color="#20556f" fontWeight="Bold">
-                    Top Comment 2
-                  </Typography>{" "}
-                  <Typography sx={{ fontWeight: "", fontSize: "14px" }}>
-                    {analyticsData.top3commentsdatetime[1]}
-                  </Typography>
-                  <Typography sx={{ fontWeight: "bold" }}>
+                  <Box
+                    sx={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <Typography variant="h6" color="#20556f" fontWeight="Bold">
+                      Top Comment 2
+                    </Typography>{" "}
+                    <Typography sx={{ fontWeight: "", fontSize: "14px" }}>
+                      {analyticsData.top3commentsdatetime[1]}
+                    </Typography>
+                  </Box>
+                  <Typography sx={{ fontWeight: "" }}>
                     {analyticsData.top3comments[1].substring(0, 200)}
                   </Typography>
                 </Box>
@@ -122,16 +148,23 @@ const TopComments = ({ analyticsData }) => {
                     borderRadius: "6px",
                     padding: "1rem",
                     margin: "2rem 0",
+                    borderLeft: `4px solid ${getBorderColor(
+                      analyticsData.top3comments_sentiment[2]
+                    )}`,
                   }}
                 >
                   {" "}
-                  <Typography variant="h6" color="#20556f" fontWeight="Bold">
-                    Top Comment 3
-                  </Typography>{" "}
-                  <Typography sx={{ fontWeight: "", fontSize: "14px" }}>
-                    {analyticsData.top3commentsdatetime[2]}
-                  </Typography>
-                  <Typography sx={{ fontWeight: "bold" }}>
+                  <Box
+                    sx={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <Typography variant="h6" color="#20556f" fontWeight="Bold">
+                      Top Comment 3
+                    </Typography>{" "}
+                    <Typography sx={{ fontWeight: "", fontSize: "14px" }}>
+                      {analyticsData.top3commentsdatetime[2]}
+                    </Typography>
+                  </Box>
+                  <Typography sx={{ fontWeight: "" }}>
                     {analyticsData.top3comments[2].substring(0, 205) + "..."}
                   </Typography>
                 </Box>
