@@ -184,11 +184,6 @@ def perform_sentiment_analysis():
                                                         top_comments_sentiment.append(sentiment_score)
 
 
-
-
-
-
-
                                                         print("Top 3 comments sentiment scores: ", top_comments_sentiment)
 
                                         #   top_comments_sentiment = []

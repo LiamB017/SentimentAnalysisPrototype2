@@ -30,6 +30,8 @@ const Timechart = ({ analyticsData, }) => {
 
   const dateCounts = {};
 
+  const hourlyCounts = {};
+
   // Count the occurrences of each date
 
   analyticsData.commentsdatetime.forEach((dateString) => {
@@ -40,10 +42,32 @@ const Timechart = ({ analyticsData, }) => {
     dateCounts[formattedDate] = (dateCounts[formattedDate] || 0) + 1;
   });
 
+  analyticsData.commentsdatetime.forEach((dateString) => {
+    const date = new Date(dateString);
+    const formattedHour = `${date.getFullYear()}-${(date.getMonth() + 1)
+      .toString()
+      .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")} ${date
+      .getHours()
+      .toString()
+      .padStart(2, "0")}`; // Format date as YYYY-MM-DD HH
+    hourlyCounts[formattedHour] = (hourlyCounts[formattedHour] || 0) + 1;
+  });
+
+  Object.keys(hourlyCounts).forEach((date) => {
+    console.log(`${date}: ${hourlyCounts[date]} occurrences`);
+  });
+
+
   // Log the counts for each date
   Object.keys(dateCounts).forEach((date) => {
     console.log(`${date}: ${dateCounts[date]} occurrences`);
   });
+
+  Object.keys(hourlyCounts).forEach((hour) => {
+    console.log("Hourly logs",`${hour}: ${hourlyCounts[hour]} occurrences`);
+  });
+
+  console.log(Object.keys(hourlyCounts).length);
 
   const firstDate = String(Object.keys(dateCounts)[0]);
 
@@ -63,6 +87,12 @@ const Timechart = ({ analyticsData, }) => {
   }));
 
 
+  const hourlyData = Object.keys(hourlyCounts).map((hour) => ({
+
+    name: hour,
+    commentCount: hourlyCounts[hour],
+  }));
+
 
 
   return (
@@ -74,7 +104,7 @@ const Timechart = ({ analyticsData, }) => {
         sx={{
           backgroundColor: "#20556f",
           color: "#fff",
-          marginLeft: "465px",
+          marginLeft: "335px",
           marginBottom: "10px",
           padding: "10px 20px",
           borderRadius: "8px",
@@ -87,33 +117,62 @@ const Timechart = ({ analyticsData, }) => {
           },
         }}
       >
-        {showHourlyChart ? "Show Hourly Chart" : "Show Day Chart"}
+        {showHourlyChart ? "Show Daily User Engagement Chart" : "Show Hourly User Engagement Chart"}
       </Button>
-      <LineChart
-        width={660}
-        height={500}
-        data={data}
-        margin={{
-          top: 5,
-          left: 140,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="4 4" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line
-          type="monotone"
-          dataKey="commentCount"
-          stroke="#20556f"
-          strokeWidth={7}
-          activeDot={{ r: 8 }}
-        />
-      </LineChart>
+
+      {showHourlyChart === false && (
+        <LineChart
+          width={660}
+          height={500}
+          data={data}
+          margin={{
+            top: 5,
+            left: 140,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="4 4" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="commentCount"
+            stroke="#20556f"
+            strokeWidth={7}
+            activeDot={{ r: 8 }}
+          />
+        </LineChart>
+      )}
+      {showHourlyChart && (
+        <LineChart
+          width={660}
+          height={500}
+          data={hourlyData}
+          margin={{
+            top: 5,
+            left: 140,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="4 4" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="commentCount"
+            stroke="#20556f"
+            strokeWidth={7}
+            activeDot={{ r: 8 }}
+          />
+        </LineChart>
+      )}
     </>
   );
+
 };
 
   export default Timechart;
