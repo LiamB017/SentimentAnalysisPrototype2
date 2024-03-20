@@ -74,7 +74,7 @@ const Home = () => {
               fontWeight="bolder"
               color="#20556f"
               component="div"
-              sx={{ textAlign: "center" }}
+              sx={{ textAlign: "left" }}
             >
               Top Search Results
             </Typography>
@@ -83,9 +83,10 @@ const Home = () => {
         <Grid
           container
           justifyContent="center"
-          alignItems="center"
+          alignItems="flex-start" // Align items to the left
           flexDirection="column" // Change flexDirection to "column" for vertical ordering
           spacing={1}
+          marginLeft={17}
         >
           {responseData &&
             responseData.post_titles &&

@@ -1,7 +1,8 @@
 
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
+import dayjs from "dayjs";
 
 const Timechart = ({ analyticsData, }) => {
   console.log("Timechart has analyticsData", analyticsData);
@@ -34,22 +35,15 @@ const Timechart = ({ analyticsData, }) => {
 
   // Count the occurrences of each date
 
-  analyticsData.commentsdatetime.forEach((dateString) => {
-    const date = new Date(dateString);
-    const formattedDate = `${date.getFullYear()}-${
-      date.getMonth() + 1
-    }-${date.getDate()}`; // Format date as YYYY-MM-DD
-    dateCounts[formattedDate] = (dateCounts[formattedDate] || 0) + 1;
-  });
+analyticsData.commentsdatetime.forEach((dateString) => {
+  const date = dayjs(dateString);
+  const formattedDate = date.format("YYYY-MM-DD"); // Format date in YYYY-MM-DD
+  dateCounts[formattedDate] = (dateCounts[formattedDate] || 0) + 1;
+});
 
   analyticsData.commentsdatetime.forEach((dateString) => {
-    const date = new Date(dateString);
-    const formattedHour = `${date.getFullYear()}-${(date.getMonth() + 1)
-      .toString()
-      .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")} ${date
-      .getHours()
-      .toString()
-      .padStart(2, "0")}`; // Format date as YYYY-MM-DD HH
+    const date = dayjs(dateString);
+    const formattedHour = date.format("MM-DD HH[h]");
     hourlyCounts[formattedHour] = (hourlyCounts[formattedHour] || 0) + 1;
   });
 
@@ -73,13 +67,7 @@ const Timechart = ({ analyticsData, }) => {
 
   console.log("First date:", firstDate);
 
-  const secondDate = String(Object.keys(dateCounts)[1]);
-
-  const thirdDate = String(Object.keys(dateCounts)[2]);
-
   console.log("this is first count", dateCounts[firstDate]);
-
-  const firstDateCount = dateCounts[firstDate];
 
   const data = Object.keys(dateCounts).map((date) => ({
     name: date,
@@ -88,8 +76,7 @@ const Timechart = ({ analyticsData, }) => {
 
 
   const hourlyData = Object.keys(hourlyCounts).map((hour) => ({
-
-    name: hour,
+    name: `${hour}h`,
     commentCount: hourlyCounts[hour],
   }));
 
@@ -105,15 +92,15 @@ const Timechart = ({ analyticsData, }) => {
           backgroundColor: "#20556f",
           color: "#fff",
           marginLeft: "335px",
-          marginBottom: "10px",
+          marginBottom: "20px",
           padding: "10px 20px",
           borderRadius: "8px",
           fontWeight: "bold",
-          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)", // Adjusted shadow
-          transition: "background-color 0.3s, color 0.3s, box-shadow 0.3s", // Include box-shadow in transition
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
+          transition: "background-color 0.3s, color 0.3s, box-shadow 0.3s",
           "&:hover": {
             backgroundColor: "#163d4f",
-            boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.5)", // Adjusted shadow on hover
+            boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.5)",
           },
         }}
       >

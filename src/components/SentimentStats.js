@@ -40,7 +40,7 @@ const SentimentStats = ({ analyticsData }) => {
                   </Typography>
                 </Box>
 
-                <Box
+                {/* <Box
                   sx={{
                     backgroundColor: "#f5f5f5",
                     borderRadius: 2,
@@ -57,7 +57,7 @@ const SentimentStats = ({ analyticsData }) => {
                   >
                     Compound Score is {analyticsData.compound}
                   </Typography>
-                </Box>
+                </Box> */}
 
                 <Box
                   sx={{
