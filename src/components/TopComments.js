@@ -38,13 +38,12 @@ const TopComments = ({ analyticsData }) => {
   return (
     <div>
       {analyticsData && (
-        <Grid item xs={10} sx={{ justifyContent: "flex-end" }}>
+        <Grid item xs={10} sx={{ justifyContent: "space-between" }}>
           <Box
             sx={{
               padding: "1rem",
               borderRadius: "6px",
               backgroundColor: "#fff",
-              marginLeft: "12rem",
             }}
           >
             <Box
@@ -52,7 +51,7 @@ const TopComments = ({ analyticsData }) => {
                 color: "#fff",
                 display: "flex",
                 justifyContent: "space-between",
-                alignItems: "center",
+                alignItems: "left",
               }}
             >
               {" "}
@@ -189,7 +188,7 @@ const TopComments = ({ analyticsData }) => {
                     Upvotes: analyticsData.topcommentsscore[2],
                   },
                 ]}
-                margin={{ left: 110, top: 40 }}
+                margin={{  top: 40 }}
               >
                 <XAxis stroke="black" dataKey="name" />
                 <YAxis stroke="black" />

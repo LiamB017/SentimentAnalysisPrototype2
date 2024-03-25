@@ -9,10 +9,8 @@ const Piechart = ({ analyticsData }) => {
   const [showSecondChart, setShowSecondChart] = useState(false);
   console.log(analyticsData, "Piechart has responsedata");
 
-  const handleClick = () => {
-    setShowSecondChart((prevShowSecondChart) => !prevShowSecondChart);
-
-    console.log("Button clicked");
+  const toggleView = () => {
+    setShowSecondChart(!showSecondChart);
   };
 
   let data = null;
@@ -63,26 +61,28 @@ const Piechart = ({ analyticsData }) => {
   };
 
   return (
-    <ResponsiveContainer width="40%" height="40%">
+    <ResponsiveContainer width="80%" height="100%">
       <Button
-        type="submit"
+
+        onClick={toggleView}
         variant="contained"
+        color="primary"
         sx={{
-          mx: 38,
+          marginLeft: "380px",
           backgroundColor: "#20556f",
           color: "#fff",
           padding: "10px 20px",
           borderRadius: "8px",
           fontWeight: "bold",
-          boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.2)",
-          transition: "background-color 0.3s, color 0.3s",
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)", // Adjusted shadow
+          transition: "background-color 0.3s, color 0.3s, box-shadow 0.3s", // Include box-shadow in transition
           "&:hover": {
             backgroundColor: "#163d4f",
+            boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.5)", // Adjusted shadow on hover
           },
         }}
-        onClick={handleClick}
       >
-        {showSecondChart ? <p>Show Pos/Neg Chart</p> : <p>Show Neutral Chart</p>}
+        {showSecondChart ? "Show Pos/Neg Chart" : "Show Neutral Chart"}
       </Button>
       {showSecondChart ? (
         <PieChart width={200} height={200}>

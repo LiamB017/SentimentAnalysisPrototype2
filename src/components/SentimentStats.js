@@ -17,15 +17,16 @@ const SentimentStats = ({ analyticsData }) => {
                   justifyContent: "space-between",
 
                   borderRadius: 2,
-                  padding: 2,
+                  padding: 1,
                 }}
               >
                 <Box
                   sx={{
                     backgroundColor: "#f5f5f5",
                     borderRadius: 2,
-                    padding: 2,
+                    padding: 1,
                     mx: 3,
+                    mb: 2,
                     color: "#20556f",
                   }}
                 >
@@ -63,8 +64,10 @@ const SentimentStats = ({ analyticsData }) => {
                   sx={{
                     backgroundColor: "#f5f5f5",
                     borderRadius: 2,
-                    padding: 2,
+                    padding: 1,
                     mx: 3,
+                    mb: 2,
+                    color: "#20556f",
                   }}
                 >
                   <Typography

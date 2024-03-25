@@ -45,118 +45,110 @@ const Home = () => {
 
   return (
     <>
-      <Grid
-        container
-        justifyContent="center"
-        alignItems="center"
-        height="30vh" // Set the container height to the full viewport height
-        // backgroundColor="#20556f"
-      >
-        <Grid item xs={8}>
-          <Typography
-            variant="h2"
-            fontWeight="bolder"
-            color="#20556f"
-            component="div"
-            sx={{ textAlign: "center" }}
-          >
-            Sentiment Analyzer
-          </Typography>
-        </Grid>
+      <div style={{ display: "flex", justifyContent: "flex-start"  }}>
+        <Grid
 
-        <Grid item xs={12} sx={{ textAlign: "center", margin: "0 auto" }}>
-          <SearchForm setResponseData={setResponseData} />
-        </Grid>
-        {responseData && (
-          <Grid item xs={8}>
+
+        >
+          <Grid item xs={4}>
             <Typography
-              variant="h5"
+              variant="h4"
               fontWeight="bolder"
               color="#20556f"
               component="div"
-              sx={{ textAlign: "left" }}
+              sx={{ textAlign: "left", marginLeft: "40px", marginTop: "40px" }}
             >
-              Top Search Results
+              Reddit
+              <br></br>
+              Sentiment
+              <br></br>
+              Analyzer
             </Typography>
-          </Grid>
-        )}
-        <Grid
-          container
-          justifyContent="center"
-          alignItems="flex-start" // Align items to the left
-          flexDirection="column" // Change flexDirection to "column" for vertical ordering
-          spacing={1}
-          marginLeft={17}
-        >
-          {responseData &&
-            responseData.post_titles &&
-            responseData.post_titles.map((title, index) => (
-              <Grid
-                xs={8}
-                style={{
-                  marginTop: "10px",
-                  fontWeight: "bold",
-                  marginBottom: "20px",
-                  cursor: "pointer",
+            <Grid item xs={4}>
+              <Typography
+                variant="h6"
+                fontWeight="bolder"
+                color="#20556f"
+                component="div"
+                sx={{
+                  textAlign: "left",
+                  marginLeft: "40px",
+                  marginTop: "40px",
                 }}
-                item
-                key={index}
-                onClick={() => handleClick(title)} // Keep the onClick handler
               >
-                <Typography style={{ fontWeight: "bold" }}>
-                  {" "}
-                  {index + 1}. {title}{" "}
-                </Typography>
-              </Grid>
-            ))}
-        </Grid>
-        <Grid
-          container
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="row"
-        >
-          {analyticsData && (
-            <>
-              <Grid item xs={10} style={{ marginTop: "20px" }}>
-                <Box
+                This application is a sentiment analyzer that helps you analyze
+                the sentiment of brands, products, and services by analyzing the
+                sentiment of comments found on posts on Reddit. Visualizations
+                and charts will display based on your desired search query.
+                <br></br>
+                <br></br>
+                Enter a search query below to get started.
+              </Typography>
+            </Grid>
+            <Grid item xs={6} sx={{ textAlign: "left", marginTop: "40px" }}>
+              <SearchForm setResponseData={setResponseData} />
+            </Grid>
+
+            {responseData && (
+              <Grid item xs={8}>
+                <Typography
+                  variant="h4"
+                  fontWeight="bolder"
+                  color="#20556f"
+                  component="div"
                   sx={{
-                    padding: "1rem",
+                    textAlign: "left",
+                    marginLeft: "40px",
+                    marginTop: "20px",
                   }}
                 >
-                  <Typography
-                    variant="h4"
-                    color="#20556f"
-                    component="div"
-                    sx={{ textAlign: "center", fontWeight: "bolder" }}
-                  >
-                    {analyticsData.post}
-                  </Typography>
-                  <Typography
-                    color="#20556f"
-                    component="div"
-                    sx={{
-                      textAlign: "center",
-                      fontWeight: "bolder",
-                      marginTop: "1rem",
-                    }}
-                  >
-                    <a href={analyticsData.url} style={{ color: "#20556f" }}>
-                      {analyticsData.url}
-                    </a>
-                  </Typography>
-                </Box>
+                  Top Search Results
+                </Typography>
               </Grid>
-            </>
-          )}
-          <Grid item xs={8} my={5} mx={200}>
-            {" "}
-            {loading && <CircularProgress />}{" "}
+            )}
+            <Grid
+              container
+              justifyContent="left"
+              alignItems="flex-start" // Align items to the left
+              flexDirection="column" // Change flexDirection to "column" for vertical ordering
+              spacing={1}
+              sx={{
+                textAlign: "left",
+                marginLeft: "40px",
+                marginTop: "20px",
+              }}
+            >
+              {responseData &&
+                responseData.post_titles &&
+                responseData.post_titles.map((title, index) => (
+                  <Grid
+                    xs={8}
+                    style={{
+                      marginTop: "10px",
+                      fontWeight: "bold",
+                      marginBottom: "20px",
+                      cursor: "pointer",
+                    }}
+                    item
+                    key={index}
+                    onClick={() => handleClick(title)} // Keep the onClick handler
+                  >
+                    <Typography style={{ fontWeight: "bold" }}>
+                      {" "}
+                      {index + 1}. {title}{" "}
+                    </Typography>
+                  </Grid>
+                ))}
+            </Grid>
           </Grid>
         </Grid>
-
-        <Analytics analyticsData={analyticsData} />
-      </Grid>
+        <Grid container
+          justifyContent="left"
+          alignItems="left"
+         >
+          <Analytics analyticsData={analyticsData} />
+        </Grid>
+      </div>
     </>
   );
 };

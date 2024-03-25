@@ -79,8 +79,8 @@ const SearchForm = ({ setResponseData }) => {
 
   return (
     <>
-      <Grid container justifyContent="center" alignItems="center">
-        <Grid item xs={6} mx={50} my={5}>
+      <Grid container justifyContent="left" alignItems="left">
+        <Grid item xs={12} mx={4} my={2}>
           <TextField
             fullWidth
             label="Subreddit"
@@ -92,7 +92,7 @@ const SearchForm = ({ setResponseData }) => {
             value={form.subreddit}
           />
         </Grid>
-        <Grid item xs={6} my={2} mx={50}>
+        <Grid item xs={12} my={2} mx={4}>
           <TextField
             fullWidth
             label="Topic"
@@ -102,19 +102,20 @@ const SearchForm = ({ setResponseData }) => {
             error={errors.topic}
             helperText={errors.topic?.message}
             value={form.topic}
+
           />
         </Grid>
-        <Grid item xs={8} my={2} mx={50}>
+        <Grid item xs={12} my={2} mx={4}>
           <Button
             type="submit"
             variant="contained"
             color="primary"
             onClick={handleClick}
             sx={{
-              mx: 38,
+
               backgroundColor: "#20556f",
               color: "#fff",
-              padding: "10px 20px",
+              padding: "20px 40px", // Increase padding to make the button larger
               borderRadius: "8px",
               fontWeight: "bold",
               boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.2)",
@@ -128,7 +129,7 @@ const SearchForm = ({ setResponseData }) => {
           </Button>
           {/* Render ActivityIndicator when loading */}
         </Grid>
-        <Grid item xs={8} my={5} mx={85}>
+        <Grid item xs={8} my={2} mx={60}>
           {" "}
           {loading && <CircularProgress />}{" "}
         </Grid>

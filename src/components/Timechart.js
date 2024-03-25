@@ -114,7 +114,7 @@ analyticsData.commentsdatetime.forEach((dateString) => {
           data={data}
           margin={{
             top: 5,
-            left: 140,
+
             bottom: 5,
           }}
         >
@@ -139,7 +139,7 @@ analyticsData.commentsdatetime.forEach((dateString) => {
           data={hourlyData}
           margin={{
             top: 5,
-            left: 140,
+
             bottom: 5,
           }}
         >
