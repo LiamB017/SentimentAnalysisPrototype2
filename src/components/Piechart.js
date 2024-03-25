@@ -82,7 +82,7 @@ const Piechart = ({ analyticsData }) => {
         }}
         onClick={handleClick}
       >
-        {showSecondChart ? <p>Pos/Neg Chart</p> : <p>Neutral Chart</p>}
+        {showSecondChart ? <p>Show Pos/Neg Chart</p> : <p>Show Neutral Chart</p>}
       </Button>
       {showSecondChart ? (
         <PieChart width={200} height={200}>

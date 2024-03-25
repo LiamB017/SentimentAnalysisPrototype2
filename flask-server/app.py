@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
+from collections import defaultdict
 
 from nltk.tokenize import word_tokenize
 import nltk
@@ -135,8 +136,10 @@ def perform_sentiment_analysis():
                                           post = searched_posts[0]
                                           post_titles = [post.title]
 
+
+
                                           comments = []
-                                          post.comments.replace_more(limit=3)
+                                          post.comments.replace_more(limit=30)
                                           comments.extend([comment.body for comment in post.comments.list() if isinstance(comment, praw.models.Comment)])
                                           number_of_comments = len(comments)
                                           comments_datetime = []
@@ -146,6 +149,23 @@ def perform_sentiment_analysis():
                                                           comments_datetime.append(datetime.datetime.fromtimestamp(comment.created_utc))
                                                           print("Comment datetime:", datetime.datetime.fromtimestamp(comment.created_utc))
 
+                                        #   comments_by_day = defaultdict(list)
+                                        #   post.comments.replace_more(limit=3)
+                                        #   for comment in post.comments.list():
+                                        #           post.comments.replace_more(limit=3)
+                                        #           if isinstance(comment, praw.models.Comment):
+                                        #                   comments_by_day[datetime.datetime.fromtimestamp(comment.created_utc).date()].append(comment.body)
+                                        #                   print("Comment datetime:", datetime.datetime.fromtimestamp(comment.created_utc))
+
+                                        #   sentiment_by_day = {}
+                                        #   analyzer = SentimentIntensityAnalyzer()
+                                        #   for date, comments in comments_by_day.items():
+                                        #           comments_text = ' '.join(comments)
+                                        #           sentiment_scores = analyzer.polarity_scores(comments_text)
+                                        #           sentiment_by_day[date] = sentiment_scores
+
+                                        #   print(sentiment_by_day)
+
 
 
                                           commentsarray = [comment.body for comment in post.comments.list()]
@@ -154,7 +174,7 @@ def perform_sentiment_analysis():
                                           analyzer = SentimentIntensityAnalyzer()
                                           vscomment = analyzer.polarity_scores(comment.body)
                                           print(commentsarray)
-
+                                          print("numcomm",  number_of_comments)
 
 
                                           analyzer = SentimentIntensityAnalyzer()
@@ -217,6 +237,7 @@ def perform_sentiment_analysis():
            "filtered_commentsarray": filtered_commentsarray,
            "number_of_comments": number_of_comments,
            "top3comments_sentiment": top_comments_sentiment,
+        #    "sentiment_by_day": sentiment_by_day
           }
 
 
