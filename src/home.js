@@ -45,12 +45,12 @@ const Home = () => {
 
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "flex-start"  }}>
+      <div style={{ display: "flex",  }}>
         <Grid
 
 
         >
-          <Grid item xs={4}>
+          <Grid item xs={2}>
             <Typography
               variant="h4"
               fontWeight="bolder"
@@ -64,7 +64,7 @@ const Home = () => {
               <br></br>
               Analyzer
             </Typography>
-            <Grid item xs={4}>
+            <Grid item xs={1}>
               <Typography
                 variant="h6"
                 fontWeight="bolder"

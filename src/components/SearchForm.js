@@ -80,7 +80,7 @@ const SearchForm = ({ setResponseData }) => {
   return (
     <>
       <Grid container justifyContent="left" alignItems="left">
-        <Grid item xs={12} mx={4} my={2}>
+        <Grid item xs={6} mx={4} my={2}>
           <TextField
             fullWidth
             label="Subreddit"
@@ -92,7 +92,7 @@ const SearchForm = ({ setResponseData }) => {
             value={form.subreddit}
           />
         </Grid>
-        <Grid item xs={12} my={2} mx={4}>
+        <Grid item xs={6} my={2} mx={4}>
           <TextField
             fullWidth
             label="Topic"

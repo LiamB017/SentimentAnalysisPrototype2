@@ -9,7 +9,7 @@ const SentimentStats = ({ analyticsData }) => {
       {analyticsData && (
         <>
           <Grid container spacing={2}>
-            <Grid item xs={24}>
+            <Grid item xs={6}>
               <Box
                 sx={{
                   display: "flex",

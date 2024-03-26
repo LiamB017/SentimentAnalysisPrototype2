@@ -9,8 +9,10 @@ const Piechart = ({ analyticsData }) => {
   const [showSecondChart, setShowSecondChart] = useState(false);
   console.log(analyticsData, "Piechart has responsedata");
 
-  const toggleView = () => {
-    setShowSecondChart(!showSecondChart);
+  const handleClick = () => {
+    setShowSecondChart((prevShowSecondChart) => !prevShowSecondChart);
+
+    console.log("Button clicked");
   };
 
   let data = null;
@@ -61,14 +63,13 @@ const Piechart = ({ analyticsData }) => {
   };
 
   return (
-    <ResponsiveContainer width="80%" height="100%">
+    <ResponsiveContainer width="100%" height="40%">
       <Button
-
-        onClick={toggleView}
         variant="contained"
         color="primary"
+        onClick={handleClick}
         sx={{
-          marginLeft: "380px",
+          mx: 35,
           backgroundColor: "#20556f",
           color: "#fff",
           padding: "10px 20px",
@@ -82,14 +83,15 @@ const Piechart = ({ analyticsData }) => {
           },
         }}
       >
-        {showSecondChart ? "Show Pos/Neg Chart" : "Show Neutral Chart"}
+        {showSecondChart ? "Show Neutral Chart" : "Show Pos/Neg Chart"}
+
       </Button>
       {showSecondChart ? (
         <PieChart width={200} height={200}>
           <Pie
             data={data}
-            cx="32%"
-            cy="65%"
+            cx="12%"
+            cy="80%"
             labelLine={false}
             label={renderCustomizedLabel}
             outerRadius={75}
@@ -120,8 +122,8 @@ const Piechart = ({ analyticsData }) => {
           <PieChart width={300} height={260}>
             <Pie
               data={data2}
-              cx="50%"
-              cy="50%"
+              cx="30%"
+              cy="60%"
               labelLine={false}
               label={renderCustomizedLabel}
               outerRadius={75}
