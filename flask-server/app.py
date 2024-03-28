@@ -139,7 +139,6 @@ def perform_sentiment_analysis():
                                           comments_by_date = defaultdict(list)
 
 
-
                                           comments = []
                                           post.comments.replace_more(limit=30)
                                           comments.extend([comment.body for comment in post.comments.list() if isinstance(comment, praw.models.Comment)])
@@ -165,6 +164,14 @@ def perform_sentiment_analysis():
                                             print(f"Sentiment for {date}: {sentiment}")
 
 
+                                          commentsarray = [comment.body for comment in post.comments.list()]
+                                          filtered_commentsarray = [' '.join([word for word in word_tokenize(comment) if word.lower() not in stop_words]) for comment in commentsarray]
+                                          number_of_comments = len(commentsarray)
+                                          analyzer = SentimentIntensityAnalyzer()
+                                          vscomment = analyzer.polarity_scores(comment.body)
+                                          print("Comments array", commentsarray)
+                                          print("numcomm",  number_of_comments)
+
 
                                         #   comments_by_day = defaultdict(list)
                                         #   post.comments.replace_more(limit=3)
@@ -184,25 +191,9 @@ def perform_sentiment_analysis():
                                         #   print(sentiment_by_day)
 
 
-                                          bigrams_list = []
-                                          commentsarray = [comment.body for comment in post.comments.list()]
-                                          filtered_commentsarray = [' '.join([word for word in word_tokenize(comment) if word.lower() not in stop_words]) for comment in commentsarray]
-                                          number_of_comments = len(comments)
-                                          analyzer = SentimentIntensityAnalyzer()
-                                          vscomment = analyzer.polarity_scores(comment.body)
-                                          print(commentsarray)
-                                          print("numcomm",  number_of_comments)
-                                          bigrams_list = list(nltk.bigrams(commentsarray))
 
-                                          words = word_tokenize(' '.join(filtered_commentsarray))
-                                          bigrams = list(nltk.bigrams(words))
-                                          print("bigrams", bigrams)
 
-                                          bigram_counts = Counter(bigrams)
-                                          top_5_bigrams = bigram_counts.most_common(5)
 
-                                          print(bigrams)
-                                          print(top_5_bigrams)
 
                                           analyzer = SentimentIntensityAnalyzer()
                                           vs = analyzer.polarity_scores(' '.join(commentsarray))
@@ -264,8 +255,7 @@ def perform_sentiment_analysis():
            "filtered_commentsarray": filtered_commentsarray,
            "number_of_comments": number_of_comments,
            "top3comments_sentiment": top_comments_sentiment,
-           "bigrams": bigrams,
-           "top_5_bigrams": top_5_bigrams,
+
 
            "Sentiment_by_date": sentiment_by_date,
 
