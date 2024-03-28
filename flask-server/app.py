@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
 from collections import defaultdict
-
+from collections import Counter
 from nltk.tokenize import word_tokenize
 import nltk
 nltk.download('stopwords')
@@ -136,6 +136,8 @@ def perform_sentiment_analysis():
                                           post = searched_posts[0]
                                           post_titles = [post.title]
 
+                                          comments_by_date = defaultdict(list)
+
 
 
                                           comments = []
@@ -147,7 +149,22 @@ def perform_sentiment_analysis():
                                                   post.comments.replace_more(limit=3)
                                                   if isinstance(comment, praw.models.Comment):
                                                           comments_datetime.append(datetime.datetime.fromtimestamp(comment.created_utc))
+                                                          comments_by_date[datetime.datetime.fromtimestamp(comment.created_utc).date()].append(comment.body)
                                                           print("Comment datetime:", datetime.datetime.fromtimestamp(comment.created_utc))
+
+                                          sentiment_by_date = defaultdict(list)
+
+                                          analyzer = SentimentIntensityAnalyzer()
+                                          for date, comments in comments_by_date.items():
+                                                  comments_text = ' '.join(comments)
+                                                  sentiment_scores = analyzer.polarity_scores(comments_text)
+                                                  sentiment_by_date[str(date)]= sentiment_scores
+
+
+                                          for date, sentiment in sentiment_by_date.items():
+                                            print(f"Sentiment for {date}: {sentiment}")
+
+
 
                                         #   comments_by_day = defaultdict(list)
                                         #   post.comments.replace_more(limit=3)
@@ -167,7 +184,7 @@ def perform_sentiment_analysis():
                                         #   print(sentiment_by_day)
 
 
-
+                                          bigrams_list = []
                                           commentsarray = [comment.body for comment in post.comments.list()]
                                           filtered_commentsarray = [' '.join([word for word in word_tokenize(comment) if word.lower() not in stop_words]) for comment in commentsarray]
                                           number_of_comments = len(comments)
@@ -175,7 +192,17 @@ def perform_sentiment_analysis():
                                           vscomment = analyzer.polarity_scores(comment.body)
                                           print(commentsarray)
                                           print("numcomm",  number_of_comments)
+                                          bigrams_list = list(nltk.bigrams(commentsarray))
 
+                                          words = word_tokenize(' '.join(filtered_commentsarray))
+                                          bigrams = list(nltk.bigrams(words))
+                                          print("bigrams", bigrams)
+
+                                          bigram_counts = Counter(bigrams)
+                                          top_5_bigrams = bigram_counts.most_common(5)
+
+                                          print(bigrams)
+                                          print(top_5_bigrams)
 
                                           analyzer = SentimentIntensityAnalyzer()
                                           vs = analyzer.polarity_scores(' '.join(commentsarray))
@@ -237,7 +264,11 @@ def perform_sentiment_analysis():
            "filtered_commentsarray": filtered_commentsarray,
            "number_of_comments": number_of_comments,
            "top3comments_sentiment": top_comments_sentiment,
-        #    "sentiment_by_day": sentiment_by_day
+           "bigrams": bigrams,
+           "top_5_bigrams": top_5_bigrams,
+
+           "Sentiment_by_date": sentiment_by_date,
+
           }
 
 

@@ -83,8 +83,7 @@ const Piechart = ({ analyticsData }) => {
           },
         }}
       >
-        {showSecondChart ? "Show Neutral Chart" : "Show Pos/Neg Chart"}
-
+        {showSecondChart ? "Show Pos/Neg Chart" : "Show Neutral Chart"}
       </Button>
       {showSecondChart ? (
         <PieChart width={200} height={200}>

@@ -45,11 +45,11 @@ const Analytics = ({ analyticsData }) => {
           </Grid>
           <Grid container spacing={6}>
             <Grid item xs={6} my={5}>
-              <TopComments analyticsData={analyticsData} />
+              <Piechart analyticsData={analyticsData} />
             </Grid>
 
             <Grid item xs={6} my={5}>
-              <Piechart analyticsData={analyticsData} />
+              <TopComments analyticsData={analyticsData} />
             </Grid>
             <Grid item xs={6} my={5}>
               <Timechart analyticsData={analyticsData} />
