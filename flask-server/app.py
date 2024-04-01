@@ -151,7 +151,10 @@ def perform_sentiment_analysis():
                                                           comments_by_date[datetime.datetime.fromtimestamp(comment.created_utc).date()].append(comment.body)
                                                           print("Comment datetime:", datetime.datetime.fromtimestamp(comment.created_utc))
 
+
+                                        #   analysing sentiment of comments by date
                                           sentiment_by_date = defaultdict(list)
+
 
                                           analyzer = SentimentIntensityAnalyzer()
                                           for date, comments in comments_by_date.items():
@@ -257,7 +260,7 @@ def perform_sentiment_analysis():
            "top3comments_sentiment": top_comments_sentiment,
 
 
-           "Sentiment_by_date": sentiment_by_date,
+           "sentiment_by_date": sentiment_by_date,
 
           }
 

@@ -53,13 +53,13 @@ analyticsData.commentsdatetime.forEach((dateString) => {
 
 
   // Log the counts for each date
-  Object.keys(dateCounts).forEach((date) => {
-    console.log(`${date}: ${dateCounts[date]} occurrences`);
-  });
+  // Object.keys(dateCounts).forEach((date) => {
+  //   console.log(`${date}: ${dateCounts[date]} occurrences`);
+  // });
 
-  Object.keys(hourlyCounts).forEach((hour) => {
-    console.log("Hourly logs",`${hour}: ${hourlyCounts[hour]} occurrences`);
-  });
+  // Object.keys(hourlyCounts).forEach((hour) => {
+  //   console.log("Hourly logs",`${hour}: ${hourlyCounts[hour]} occurrences`);
+  // });
 
   console.log(Object.keys(hourlyCounts).length);
 

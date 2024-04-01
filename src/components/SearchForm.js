@@ -7,7 +7,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 const SearchForm = ({ setResponseData }) => {
   const [form, setForm] = useState({
     subreddit: "ireland", // Default subreddit value
-    topic: "No Vote", // Default topic value
+    topic: "Varadkar", // Default topic value
   });
 
   const [errors, setErrors] = useState({});

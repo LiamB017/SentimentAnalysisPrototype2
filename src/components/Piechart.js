@@ -4,10 +4,27 @@ import { useState } from "react";
 import SentimentStats from "./SentimentStats";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
 const Piechart = ({ analyticsData }) => {
+
+
   const [showSecondChart, setShowSecondChart] = useState(false);
   console.log(analyticsData, "Piechart has responsedata");
+  console.log(analyticsData.sentiment_by_date, "This is sentiment by date object")
+  console.log("This is first date sentiment", analyticsData.sentiment_by_date['2024-03-20']['pos']);
+
+  const posScoresByDate = [];   // Create an array to store the positive scores by date
+
+  for (const [date, sentiment] of Object.entries(analyticsData.sentiment_by_date)) {
+   console.log(date, sentiment);
+   posScoresByDate.push(sentiment.pos);
+  }
+
+  console.log(posScoresByDate, "This is posScoresByDate");
+
+
+
 
   const handleClick = () => {
     setShowSecondChart((prevShowSecondChart) => !prevShowSecondChart);
@@ -16,13 +33,13 @@ const Piechart = ({ analyticsData }) => {
   };
 
   let data = null;
-  if (analyticsData) {
-    data = [
-      { name: "Positive", value: analyticsData.positive },
-      { name: "Negative", value: analyticsData.negative },
-      { name: "Neutral", value: analyticsData.neutral },
-    ];
-  }
+if (analyticsData) {
+  data = posScoresByDate.map((value, index) => ({
+    name: `Day ${index + 1}`,
+    value: Math.round(value * 100), // Multiply the positive score by 10
+  }));
+}
+
 
   let data2 = null;
   if (analyticsData) {
@@ -86,36 +103,30 @@ const Piechart = ({ analyticsData }) => {
         {showSecondChart ? "Show Pos/Neg Chart" : "Show Neutral Chart"}
       </Button>
       {showSecondChart ? (
-        <PieChart width={200} height={200}>
-          <Pie
-            data={data}
-            cx="12%"
-            cy="80%"
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={75}
-            fill="#8884d8"
-            dataKey="value"
-          >
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-          <Legend
-            width={150}
-            wrapperStyle={{
-              top: 20,
-              left: 280,
-              backgroundColor: "#f5f5f5",
-              border: "1px solid #d5d5d5",
-              borderRadius: 3,
-              lineHeight: "20px",
-            }}
-          />
-        </PieChart>
+
+<LineChart
+    width={660}
+    height={500}
+    data={data}
+    margin={{
+        top: 5,
+        bottom: 5,
+    }}
+>
+    <CartesianGrid strokeDasharray="4 4" />
+    <XAxis dataKey="name" />
+    <YAxis />
+    <Tooltip />
+    <Legend />
+    <Line
+        type="monotone"
+        dataKey="value" // Corrected dataKey to match the key in the data
+        stroke="#20556f"
+        strokeWidth={7}
+        activeDot={{ r: 8 }}
+    />
+</LineChart>
+
       ) : (
         <>
           <PieChart width={300} height={260}>
