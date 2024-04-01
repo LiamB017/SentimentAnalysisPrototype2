@@ -47,9 +47,9 @@ analyticsData.commentsdatetime.forEach((dateString) => {
     hourlyCounts[formattedHour] = (hourlyCounts[formattedHour] || 0) + 1;
   });
 
-  Object.keys(hourlyCounts).forEach((date) => {
-    console.log(`${date}: ${hourlyCounts[date]} occurrences`);
-  });
+  // Object.keys(hourlyCounts).forEach((date) => {
+  //   console.log(`${date}: ${hourlyCounts[date]} occurrences`);
+  // });
 
 
   // Log the counts for each date

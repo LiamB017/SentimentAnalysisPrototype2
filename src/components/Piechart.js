@@ -28,18 +28,17 @@ const Piechart = ({ analyticsData }) => {
 
   const handleClick = () => {
     setShowSecondChart((prevShowSecondChart) => !prevShowSecondChart);
-
     console.log("Button clicked");
   };
 
   let data = null;
 if (analyticsData) {
+  // Map the positive scores by date to the data format required by Recharts
   data = posScoresByDate.map((value, index) => ({
     name: `Day ${index + 1}`,
-    value: Math.round(value * 100), // Multiply the positive score by 10
+    value: Math.round(value * 100), // Round the value to the nearest integer
   }));
 }
-
 
   let data2 = null;
   if (analyticsData) {
@@ -51,7 +50,7 @@ if (analyticsData) {
 
   console.log(data, "This is piechart data");
 
-  const COLORS = ["#ade2b1", "#e80022", "#1c78ac"];
+  const COLORS = ["#206f62", "#d32f2f"];
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
@@ -81,53 +80,8 @@ if (analyticsData) {
 
   return (
     <ResponsiveContainer width="100%" height="40%">
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleClick}
-        sx={{
-          mx: 35,
-          backgroundColor: "#20556f",
-          color: "#fff",
-          padding: "10px 20px",
-          borderRadius: "8px",
-          fontWeight: "bold",
-          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)", // Adjusted shadow
-          transition: "background-color 0.3s, color 0.3s, box-shadow 0.3s", // Include box-shadow in transition
-          "&:hover": {
-            backgroundColor: "#163d4f",
-            boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.5)", // Adjusted shadow on hover
-          },
-        }}
-      >
-        {showSecondChart ? "Show Pos/Neg Chart" : "Show Neutral Chart"}
-      </Button>
-      {showSecondChart ? (
 
-<LineChart
-    width={660}
-    height={500}
-    data={data}
-    margin={{
-        top: 5,
-        bottom: 5,
-    }}
->
-    <CartesianGrid strokeDasharray="4 4" />
-    <XAxis dataKey="name" />
-    <YAxis />
-    <Tooltip />
-    <Legend />
-    <Line
-        type="monotone"
-        dataKey="value" // Corrected dataKey to match the key in the data
-        stroke="#20556f"
-        strokeWidth={7}
-        activeDot={{ r: 8 }}
-    />
-</LineChart>
 
-      ) : (
         <>
           <PieChart width={300} height={260}>
             <Pie
@@ -160,7 +114,7 @@ if (analyticsData) {
             />
           </PieChart>
         </>
-      )}
+
       <SentimentStats analyticsData={analyticsData} />
     </ResponsiveContainer>
   );

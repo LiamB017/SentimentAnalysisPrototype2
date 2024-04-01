@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import TopComments from "./TopComments";
 import WordCloud from "./WordCloud";
 import Timechart from "./Timechart";
+import SentimentOvertime from "./SentimentOverTime";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/material";
 
@@ -49,10 +50,11 @@ const Analytics = ({ analyticsData }) => {
             </Grid>
 
             <Grid item xs={6} my={5}>
-              <TopComments analyticsData={analyticsData} />
+              <SentimentOvertime analyticsData={analyticsData} />
             </Grid>
             <Grid item xs={6} my={5}>
-              <Timechart analyticsData={analyticsData} />
+              <TopComments analyticsData={analyticsData} />
+              {/* <Timechart analyticsData={analyticsData} /> */}
             </Grid>
             <Grid item xs={6} my={5}>
               <WordCloud analyticsData={analyticsData} />
