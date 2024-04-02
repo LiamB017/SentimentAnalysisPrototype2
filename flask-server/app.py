@@ -3,6 +3,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
 from collections import defaultdict
 from collections import Counter
+import time
 from nltk.tokenize import word_tokenize
 import nltk
 nltk.download('stopwords')
@@ -36,6 +37,7 @@ print(stop_words)
 
 @app.route('/sentiment', methods=['POST'])
 def get_sentiment_analysis():
+        start_time = time.time()
         topic = request.json.get('topic', '')
         subreddit_name = request.json.get('subreddit', '')
         subreddit = reddit.subreddit(subreddit_name) if subreddit_name else None
@@ -45,7 +47,9 @@ def get_sentiment_analysis():
 
                         print("Post titles: ", post_titles)
 
-
+                        end_time = time.time()  # Record the end time
+                        execution_time = end_time - start_time
+                        print("Execution time:", execution_time, "seconds")
 
                         # comments_datetime = []
                         # for comment in post.comments.list():
@@ -97,7 +101,7 @@ def get_sentiment_analysis():
                         #         sentiment = " Neutral"
                         # print("Sentiment is", sentiment)
 
-                        return {
+        return {
                                 # "compound": vs['compound'],
                                 # "sentiment": sentiment,
                                 # "topic": topic,
@@ -126,7 +130,7 @@ def get_sentiment_analysis():
 
 @app.route('/analyze_sentiment', methods=['POST'])
 def perform_sentiment_analysis():
-
+          start_time = time.time()
           post_title = request.json.get('post_title', '')
           subreddit_name = request.json.get('subreddit', '')
           subreddit = reddit.subreddit(subreddit_name)
@@ -140,7 +144,7 @@ def perform_sentiment_analysis():
 
 
                                           comments = []
-                                          post.comments.replace_more(limit=30)
+                                          post.comments.replace_more(limit=2)
                                           comments.extend([comment.body for comment in post.comments.list() if isinstance(comment, praw.models.Comment)])
                                           number_of_comments = len(comments)
                                           comments_datetime = []
@@ -239,6 +243,9 @@ def perform_sentiment_analysis():
 
                                           print(searched_posts)
                                           print(comments)
+                                          end_time = time.time()  # Record the end time
+                                          execution_time = end_time - start_time
+                                          print("Execution time:", execution_time, "seconds")
 
 
           return {

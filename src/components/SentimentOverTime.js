@@ -66,7 +66,7 @@ console.log(negScoresByDate, "This is negScoresByDate");
 
 
   return (
-    <ResponsiveContainer width="80%" height="100%">
+    <ResponsiveContainer width="130%" height="100%">
       <LineChart
         width={660}
         height={500}
@@ -74,6 +74,7 @@ console.log(negScoresByDate, "This is negScoresByDate");
         margin={{
           top: 5,
           bottom: 5,
+          right: 40,
         }}
       >
         <text

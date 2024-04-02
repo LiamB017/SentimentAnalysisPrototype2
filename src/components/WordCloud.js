@@ -1,5 +1,10 @@
-import React from "react";
+
+import React, { useState } from "react";
 import ReactWordcloud from "react-wordcloud";
+import { Button } from "@mui/material";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
+import dayjs from "dayjs";
+import { ResponsiveContainer } from "recharts";
 
 const WordCloud = ({ analyticsData }) => {
   console.log(analyticsData.commentsarray, "WordCloud has responsedata");
@@ -7,6 +12,28 @@ const WordCloud = ({ analyticsData }) => {
     analyticsData.filtered_commentsarray,
     "WordCloud has filtered_commentsarray"
   );
+
+   const [showHourlyChart, setShowHourlyChart] = useState(true);
+
+   const toggleView = () => {
+     setShowHourlyChart(!showHourlyChart);
+   };
+
+
+    const hourlyCounts = {};
+
+      analyticsData.commentsdatetime.forEach((dateString) => {
+        const date = dayjs(dateString);
+        const formattedHour = date.format("MM-DD HH[h]");
+        hourlyCounts[formattedHour] = (hourlyCounts[formattedHour] || 0) + 1;
+      });
+
+        const hourlyData = Object.keys(hourlyCounts).map((hour) => ({
+          name: `${hour}h`,
+          commentCount: hourlyCounts[hour],
+        }));
+
+
 
   const wordFreq = (texts) => {
     const words = texts
@@ -48,11 +75,64 @@ const WordCloud = ({ analyticsData }) => {
    };
 
   return (
-    <ReactWordcloud
-      words={wordsFromComments}
-      style={{ marginRight: "1000px", width: "600px" }}
-      options={options}
-    />
+    <>
+      <Button
+        onClick={toggleView}
+        variant="contained"
+        color="primary"
+        sx={{
+          backgroundColor: "#20556f",
+          color: "#fff",
+          marginLeft: "335px",
+          marginBottom: "20px",
+          padding: "10px 20px",
+          borderRadius: "8px",
+          fontWeight: "bold",
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
+          transition: "background-color 0.3s, color 0.3s, box-shadow 0.3s",
+          "&:hover": {
+            backgroundColor: "#163d4f",
+            boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.5)",
+          },
+        }}
+      >
+        {showHourlyChart
+          ? "Show WordCloud"
+          : "Show Hourly User Engagement Chart"}
+      </Button>
+      {showHourlyChart && (
+        <LineChart
+          width={600}
+          height={500}
+          data={hourlyData}
+          margin={{
+            top: 5,
+            right: 60,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="4 4" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="commentCount"
+            stroke="#20556f"
+            strokeWidth={7}
+            activeDot={{ r: 8 }}
+          />
+        </LineChart>
+      )}
+      {showHourlyChart === false && (
+        <ReactWordcloud
+          words={wordsFromComments}
+          style={{ marginRight: "800px", width: "500px" }}
+          options={options}
+        />
+      )}
+    </>
   ); // Adjust the value as needed />;
 };
 

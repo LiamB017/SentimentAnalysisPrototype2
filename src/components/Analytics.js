@@ -52,11 +52,11 @@ const Analytics = ({ analyticsData }) => {
             <Grid item xs={6} my={5}>
               <SentimentOvertime analyticsData={analyticsData} />
             </Grid>
-            <Grid item xs={6} my={5}>
+            <Grid item xs={7} my={5}>
               <TopComments analyticsData={analyticsData} />
               {/* <Timechart analyticsData={analyticsData} /> */}
             </Grid>
-            <Grid item xs={6} my={5}>
+            <Grid item xs={5} my={5}>
               <WordCloud analyticsData={analyticsData} />
             </Grid>
           </Grid>

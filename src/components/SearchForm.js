@@ -102,7 +102,6 @@ const SearchForm = ({ setResponseData }) => {
             error={errors.topic}
             helperText={errors.topic?.message}
             value={form.topic}
-
           />
         </Grid>
         <Grid item xs={12} my={2} mx={4}>
@@ -112,7 +111,6 @@ const SearchForm = ({ setResponseData }) => {
             color="primary"
             onClick={handleClick}
             sx={{
-
               backgroundColor: "#20556f",
               color: "#fff",
               padding: "20px 40px", // Increase padding to make the button larger
@@ -129,10 +127,11 @@ const SearchForm = ({ setResponseData }) => {
           </Button>
           {/* Render ActivityIndicator when loading */}
         </Grid>
-        <Grid item xs={8} my={2} mx={60}>
-          {" "}
-          {loading && <CircularProgress />}{" "}
-        </Grid>
+        {loading && (
+          <Grid item xs={8} my={20} mx={40}>
+            <CircularProgress size={80} />
+          </Grid>
+        )}
       </Grid>
     </>
   );

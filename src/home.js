@@ -45,11 +45,8 @@ const Home = () => {
 
   return (
     <>
-      <div style={{ display: "flex",  }}>
-        <Grid
-
-
-        >
+      <div style={{ display: "flex" }}>
+        <Grid>
           <Grid item xs={2}>
             <Typography
               variant="h4"
@@ -142,10 +139,12 @@ const Home = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid container
-          justifyContent="left"
-          alignItems="left"
-         >
+        <Grid container justifyContent="left" alignItems="left">
+          {loading && (
+            <Grid item xs={8} my={80} mx={80}>
+              <CircularProgress size={80} />
+            </Grid>
+          )}
           <Analytics analyticsData={analyticsData} />
         </Grid>
       </div>
