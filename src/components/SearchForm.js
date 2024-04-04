@@ -3,12 +3,16 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
+import { ThemeProvider, createTheme } from "@mui/material";
+import { useTheme } from "@emotion/react";
 
 const SearchForm = ({ setResponseData }) => {
   const [form, setForm] = useState({
     subreddit: "ireland", // Default subreddit value
     topic: "Varadkar", // Default topic value
   });
+
+  const theme = useTheme()
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -49,6 +53,8 @@ const SearchForm = ({ setResponseData }) => {
   };
 
   const handleClick = () => {
+    setErrors({}); // Reset errors state
+
     if (!isRequired()) {
       setLoading(true); // Start loading
 
@@ -60,16 +66,20 @@ const SearchForm = ({ setResponseData }) => {
         body: JSON.stringify({ topic: form.topic, subreddit: form.subreddit }),
       })
         .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
           return response.json();
         })
         .then((responseData) => {
           console.log("Response from /sentiment:", responseData);
           setResponseData(responseData);
         })
-        .catch((err) => {
-          console.error(err);
-          console.log(err.response.data);
-          setErrors(err.response.data.errors);
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          setErrors({
+            global: { message: "Error fetching data. Subreddit may not exist, Try different search terms" },
+          });
         })
         .finally(() => {
           setLoading(false); // Stop loading
@@ -130,6 +140,18 @@ const SearchForm = ({ setResponseData }) => {
         {loading && (
           <Grid item xs={8} my={20} mx={40}>
             <CircularProgress size={80} />
+          </Grid>
+        )}
+        {errors.global && (
+          <Grid item xs={8} my={15} mx={5}>
+            <h2
+              style={{
+                color: "#d32f2f",
+                fontFamily: theme.typography.fontFamily,
+              }}
+            >
+              {errors.global.message}
+            </h2>
           </Grid>
         )}
       </Grid>

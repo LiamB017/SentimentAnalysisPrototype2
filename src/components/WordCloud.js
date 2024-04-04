@@ -83,8 +83,9 @@ const WordCloud = ({ analyticsData }) => {
         sx={{
           backgroundColor: "#20556f",
           color: "#fff",
-          marginLeft: "335px",
+          marginLeft: "420px",
           marginBottom: "20px",
+          marginTop: "18px",
           padding: "10px 20px",
           borderRadius: "8px",
           fontWeight: "bold",
@@ -98,11 +99,11 @@ const WordCloud = ({ analyticsData }) => {
       >
         {showHourlyChart
           ? "Show WordCloud"
-          : "Show Hourly User Engagement Chart"}
+          : "Hourly User Engagement "}
       </Button>
       {showHourlyChart && (
         <LineChart
-          width={600}
+          width={660}
           height={500}
           data={hourlyData}
           margin={{

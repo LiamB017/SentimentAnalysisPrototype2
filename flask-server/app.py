@@ -247,7 +247,6 @@ def perform_sentiment_analysis():
                                           execution_time = end_time - start_time
                                           print("Execution time:", execution_time, "seconds")
 
-
           return {
             "compound": vs['compound'],
             "positive": vs['pos'],

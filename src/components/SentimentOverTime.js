@@ -66,7 +66,7 @@ console.log(negScoresByDate, "This is negScoresByDate");
 
 
   return (
-    <ResponsiveContainer width="130%" height="100%">
+    <ResponsiveContainer width="100%" height="100%">
       <LineChart
         width={660}
         height={500}
@@ -74,7 +74,7 @@ console.log(negScoresByDate, "This is negScoresByDate");
         margin={{
           top: 5,
           bottom: 5,
-          right: 40,
+          right: 60,
         }}
       >
         <text
@@ -94,7 +94,7 @@ console.log(negScoresByDate, "This is negScoresByDate");
         <Legend />
         <Line
           type="monotone"
-          dataKey="positiveValue" // Use posValue as the dataKey for positive scores
+          dataKey="positiveValue"
           stroke="#206f62"
           strokeWidth={7}
           activeDot={{ r: 8 }}
@@ -102,8 +102,8 @@ console.log(negScoresByDate, "This is negScoresByDate");
 
         <Line
           type="monotone"
-          dataKey="negativeValue" // Use negValue as the dataKey for negative scores
-          stroke="#d32f2f" // You can choose a different color for negative scores if needed
+          dataKey="negativeValue"
+          stroke="#d32f2f"
           strokeWidth={7}
           activeDot={{ r: 8 }}
         />
