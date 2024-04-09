@@ -12,7 +12,7 @@ const SearchForm = ({ setResponseData }) => {
     topic: "Varadkar", // Default topic value
   });
 
-  const theme = useTheme()
+  const theme = useTheme();
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -78,7 +78,10 @@ const SearchForm = ({ setResponseData }) => {
         .catch((error) => {
           console.error("Error fetching data:", error);
           setErrors({
-            global: { message: "Error fetching data. Subreddit may not exist, Try different search terms" },
+            global: {
+              message:
+                "Error fetching data. Subreddit may not exist, Try different search terms",
+            },
           });
         })
         .finally(() => {

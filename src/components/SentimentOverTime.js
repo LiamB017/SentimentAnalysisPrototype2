@@ -13,57 +13,52 @@ import {
   Tooltip,
 } from "recharts";
 
-
 const SentimentOvertime = ({ analyticsData }) => {
-
   console.log(analyticsData, "SentimentOvertime has responseData");
 
+  const posScoresByDate = []; // Create an array to store the positive scores by date
 
-const posScoresByDate = []; // Create an array to store the positive scores by date
+  for (const [date, sentiment] of Object.entries(
+    analyticsData.sentiment_by_date
+  )) {
+    console.log(date, sentiment);
+    posScoresByDate.push(sentiment.pos);
+  }
 
-for (const [date, sentiment] of Object.entries(
-  analyticsData.sentiment_by_date
-)) {
-  console.log(date, sentiment);
-  posScoresByDate.push(sentiment.pos);
-}
+  const scoresByDate = []; // Create an array to store the scores by date
 
-const scoresByDate = []; // Create an array to store the scores by date
+  for (const [date, sentiment] of Object.entries(
+    analyticsData.sentiment_by_date
+  )) {
+    console.log(date, sentiment);
+    scoresByDate.push(sentiment);
+  }
 
-for (const [date, sentiment] of Object.entries(
-  analyticsData.sentiment_by_date
-)) {
-  console.log(date, sentiment);
-  scoresByDate.push(sentiment);
-}
+  console.log(scoresByDate, "This is scoresByDate");
 
-console.log(scoresByDate, "This is scoresByDate");
+  const negScoresByDate = []; // Create an array to store the negative scores by date
 
-const negScoresByDate = []; // Create an array to store the negative scores by date
+  for (const [date, sentiment] of Object.entries(
+    analyticsData.sentiment_by_date
+  )) {
+    console.log(date, sentiment);
+    negScoresByDate.push(sentiment.neg);
+  }
 
-for (const [date, sentiment] of Object.entries(
-  analyticsData.sentiment_by_date
-)) {
-  console.log(date, sentiment);
-  negScoresByDate.push(sentiment.neg);
-}
-
-console.log(posScoresByDate, "This is posScoresByDate");
-console.log(negScoresByDate, "This is negScoresByDate");
+  console.log(posScoresByDate, "This is posScoresByDate");
+  console.log(negScoresByDate, "This is negScoresByDate");
 
   let data = null;
   if (analyticsData) {
     // Map the positive scores by date to the data format required by Recharts
-     data = Object.entries(analyticsData.sentiment_by_date).map(
-       ([date, sentiment], index) => ({
-         name: `Day ${index + 1}`,
-         positiveValue: Math.round(sentiment.pos * 100), // Round the positive value to the nearest integer
-         negativeValue: Math.round(sentiment.neg * 100), // Round the negative value to the nearest integer
-       })
-     );
-
+    data = Object.entries(analyticsData.sentiment_by_date).map(
+      ([date, sentiment], index) => ({
+        name: `Day ${index + 1}`,
+        positiveValue: Math.round(sentiment.pos * 100), // Round the positive value to the nearest integer
+        negativeValue: Math.round(sentiment.neg * 100), // Round the negative value to the nearest integer
+      })
+    );
   }
-
 
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -110,9 +105,6 @@ console.log(negScoresByDate, "This is negScoresByDate");
       </LineChart>
     </ResponsiveContainer>
   );
-
-
 };
-
 
 export default SentimentOvertime;

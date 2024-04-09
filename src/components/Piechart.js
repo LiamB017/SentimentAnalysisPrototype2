@@ -12,33 +12,6 @@ const Piechart = ({ analyticsData }) => {
   const [showSecondChart, setShowSecondChart] = useState(false);
   console.log(analyticsData, "Piechart has responsedata");
   console.log(analyticsData.sentiment_by_date, "This is sentiment by date object")
-  console.log("This is first date sentiment", analyticsData.sentiment_by_date['2024-03-20']['pos']);
-
-  const posScoresByDate = [];   // Create an array to store the positive scores by date
-
-  for (const [date, sentiment] of Object.entries(analyticsData.sentiment_by_date)) {
-   console.log(date, sentiment);
-   posScoresByDate.push(sentiment.pos);
-  }
-
-  console.log(posScoresByDate, "This is posScoresByDate");
-
-
-
-
-  const handleClick = () => {
-    setShowSecondChart((prevShowSecondChart) => !prevShowSecondChart);
-    console.log("Button clicked");
-  };
-
-  let data = null;
-if (analyticsData) {
-  // Map the positive scores by date to the data format required by Recharts
-  data = posScoresByDate.map((value, index) => ({
-    name: `Day ${index + 1}`,
-    value: Math.round(value * 100), // Round the value to the nearest integer
-  }));
-}
 
   let data2 = null;
   if (analyticsData) {
@@ -48,7 +21,7 @@ if (analyticsData) {
     ];
   }
 
-  console.log(data, "This is piechart data");
+
 
   const COLORS = ["#206f62", "#d32f2f"];
 
