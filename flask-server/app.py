@@ -205,11 +205,13 @@ def perform_sentiment_analysis():
                                           analyzer = SentimentIntensityAnalyzer()
                                           vs = analyzer.polarity_scores(' '.join(commentsarray))
                                           if vs['compound'] >= 0.05:
-                                                  sentiment = " largely Positive"
+                                           sentiment = "largely Positive"
                                           elif vs['compound'] <= -0.05:
-                                                  sentiment = " largely Negative"
+                                            sentiment = "largely Negative"
+                                          elif -0.05 <= vs['compound'] <= 0.05:
+                                             sentiment = "50/50 Positive/Negative"
                                           else:
-                                                  sentiment = " Neutral"
+                                             sentiment = "Neutral"
                                           print("Sentiment is", sentiment)
 
                                           top_comments = []
@@ -264,8 +266,6 @@ def perform_sentiment_analysis():
            "filtered_commentsarray": filtered_commentsarray,
            "number_of_comments": number_of_comments,
            "top3comments_sentiment": top_comments_sentiment,
-
-
            "sentiment_by_date": sentiment_by_date,
 
           }

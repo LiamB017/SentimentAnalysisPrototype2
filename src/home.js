@@ -63,7 +63,6 @@ const Home = () => {
             </Typography>
             <Grid item xs={1}>
               <Typography
-                variant="h6"
                 fontWeight="bolder"
                 color="#20556f"
                 component="div"
@@ -71,12 +70,15 @@ const Home = () => {
                   textAlign: "left",
                   marginLeft: "40px",
                   marginTop: "40px",
+                  fontSize: "18px", // Adjust the font size as per your preference
                 }}
               >
                 This application is a sentiment analyzer that helps you analyze
                 the sentiment of brands, products, and services by analyzing the
-                sentiment of comments found on posts on Reddit. Visualizations
-                and charts will display based on your desired search query.
+                sentiment of comments found on posts on Reddit.
+                <br></br>
+                Visualizations and charts will display based on your desired
+                search query.
                 <br></br>
                 <br></br>
                 Enter a search query below to get started.

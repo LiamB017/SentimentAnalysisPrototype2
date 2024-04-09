@@ -45,7 +45,7 @@ const Analytics = ({ analyticsData }) => {
             </Box>
           </Grid>
           <Grid container spacing={6}>
-            <Grid item xs={6} my={5}>
+            <Grid item xs={6} my={3}>
               <Piechart analyticsData={analyticsData} />
             </Grid>
 
