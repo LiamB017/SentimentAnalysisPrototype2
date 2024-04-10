@@ -3,6 +3,7 @@ import { useState } from "react";
 import SentimentStats from "./SentimentStats";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
+import { Typography } from "@mui/material";
 import { Cell, ResponsiveContainer, Legend } from "recharts";
 import {
   LineChart,
@@ -61,27 +62,29 @@ const SentimentOvertime = ({ analyticsData }) => {
   }
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <>
+      <Typography
+        variant="h5"
+        style={{
+          color: "#20556f",
+          marginLeft: "60px",
+          marginTop: "2px",
+          fontWeight: "bold", // Use fontWeight instead of weight
+        }}
+      >
+        Positive and Negative Sentiment Over Time
+      </Typography>
+
       <LineChart
         width={660}
         height={500}
         data={data}
         margin={{
-          top: 5,
+          top: 20, // Adjusted top margin to make space for the text
           bottom: 5,
           right: 60,
         }}
       >
-        <text
-          x={330}
-          y={20}
-          textAnchor="middle"
-          fontSize="20px"
-          fill="#20556f"
-          fontWeight="bold"
-        >
-          Positive and Negative Sentiment Scores Over Time
-        </text>
         <CartesianGrid strokeDasharray="4 4" />
         <XAxis dataKey="name" />
         <YAxis />
@@ -103,7 +106,7 @@ const SentimentOvertime = ({ analyticsData }) => {
           activeDot={{ r: 8 }}
         />
       </LineChart>
-    </ResponsiveContainer>
+    </>
   );
 };
 
