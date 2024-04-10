@@ -4,13 +4,17 @@ import Grid from "@mui/material/Grid";
 import TopComments from "./TopComments";
 import WordCloud from "./WordCloud";
 import Timechart from "./Timechart";
+import { Link } from "@mui/material/";
 import SentimentOvertime from "./SentimentOverTime";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/material";
 
 
 const Analytics = ({ analyticsData }) => {
-  console.log(analyticsData, "Analytics has responseData");
+
+
+
+
   return (
     <>
       {analyticsData && (
@@ -29,7 +33,7 @@ const Analytics = ({ analyticsData }) => {
               >
                 {analyticsData.post}
               </Typography>
-              <Typography
+              {/* <Typography
                 color="#20556f"
                 component="div"
                 sx={{
@@ -41,7 +45,11 @@ const Analytics = ({ analyticsData }) => {
                 <a href={analyticsData.url} style={{ color: "#20556f" }}>
                   {analyticsData.url}
                 </a>
-              </Typography>
+
+                <Link href={analyticsData.url} color="#20556f">
+                {analyticsData.url}
+                </Link>
+              </Typography> */}
             </Box>
           </Grid>
           <Grid container spacing={6}>

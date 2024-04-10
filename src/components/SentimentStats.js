@@ -2,6 +2,7 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import { Box } from "@mui/material";
 import { Typography } from "@mui/material";
+import { Link } from "@mui/material/";
 
 const SentimentStats = ({ analyticsData }) => {
   return (
@@ -79,6 +80,32 @@ const SentimentStats = ({ analyticsData }) => {
                   >
                     Sentiment Analyzed from {analyticsData.number_of_comments}{" "}
                     comments
+                  </Typography>
+                </Box>
+
+                <Box
+                  sx={{
+                    backgroundColor: "#f5f5f5",
+                    borderRadius: 2,
+                    padding: 1,
+                    mx: 3,
+                    mb: 2,
+                    color: "#20556f",
+                  }}
+                >
+                  <Typography
+                    fontSize={16}
+                    fontWeight="bolder"
+                    color="black"
+                    component="div"
+                    sx={{ textAlign: "center" }}
+                  >
+
+                     Post
+                     <br></br>
+                    <Link href={analyticsData.url} color="#20556f">
+                        {analyticsData.url}
+                    </Link>
                   </Typography>
                 </Box>
               </Box>

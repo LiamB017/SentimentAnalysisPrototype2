@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import { Typography, Button } from "@mui/material";
 import { Box } from "@mui/material";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import {
   BarChart,
   Bar,
@@ -112,6 +113,21 @@ const TopComments = ({ analyticsData }) => {
                   <Typography sx={{ fontWeight: "" }}>
                     {analyticsData.top3comments[0].substring(0, 200)}
                   </Typography>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <ThumbUpIcon
+                      style={{
+                        color: "#20556f",
+                        marginTop: "8px",
+                        marginRight: "4px",
+                      }}
+                    />
+                    <Typography
+                      sx={{ marginLeft: 1, marginTop: 1 }}
+                      style={{ color: "#20556f" }}
+                    >
+                      {analyticsData.topcommentsscore[0]}
+                    </Typography>
+                  </div>
                 </Box>
 
                 <Box
@@ -139,6 +155,21 @@ const TopComments = ({ analyticsData }) => {
                   <Typography sx={{ fontWeight: "" }}>
                     {analyticsData.top3comments[1].substring(0, 200)}
                   </Typography>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <ThumbUpIcon
+                      style={{
+                        color: "#20556f",
+                        marginTop: "8px",
+                        marginRight: "4px",
+                      }}
+                    />
+                    <Typography
+                      sx={{ marginLeft: 1, marginTop: 1 }}
+                      style={{ color: "#20556f" }}
+                    >
+                      {analyticsData.topcommentsscore[1]}
+                    </Typography>
+                  </div>
                 </Box>
 
                 <Box
@@ -166,6 +197,21 @@ const TopComments = ({ analyticsData }) => {
                   <Typography sx={{ fontWeight: "" }}>
                     {analyticsData.top3comments[2].substring(0, 205) + "..."}
                   </Typography>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <ThumbUpIcon
+                      style={{
+                        color: "#20556f",
+                        marginTop: "8px",
+                        marginRight: "4px",
+                      }}
+                    />
+                    <Typography
+                      sx={{ marginLeft: 1, marginTop: 1 }}
+                      style={{ color: "#20556f" }}
+                    >
+                      {analyticsData.topcommentsscore[2]}
+                    </Typography>
+                  </div>
                 </Box>
               </>
             )}
@@ -188,7 +234,7 @@ const TopComments = ({ analyticsData }) => {
                     Upvotes: analyticsData.topcommentsscore[2],
                   },
                 ]}
-                margin={{  top: 40 }}
+                margin={{ top: 40 }}
               >
                 <XAxis stroke="black" dataKey="name" />
                 <YAxis stroke="black" />
