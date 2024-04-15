@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from Flask import Flask, render_template, request, redirect, url_for
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
 from collections import defaultdict
