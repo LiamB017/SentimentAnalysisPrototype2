@@ -3,7 +3,6 @@ import { Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import SearchForm from "./components/SearchForm.js";
 import Analytics from "./components/Analytics.js";
-import { Box } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 
 
@@ -11,9 +10,9 @@ const Home = () => {
   const [responseData, setResponseData] = useState(null);
   const [analyticsData, setAnalyticsData] = useState(null);
   const [loading, setLoading] = useState(false);
-    const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
   console.log(responseData, "home page has responseData");
- console.log(analyticsData, "home page has analyticsData");
+  console.log(analyticsData, "home page has analyticsData");
 
    const handleClick = (title) => {
      setLoading(true); // Start loading

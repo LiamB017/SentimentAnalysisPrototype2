@@ -101,7 +101,7 @@ const SentimentStats = ({ analyticsData }) => {
                     sx={{ textAlign: "center" }}
                   >
 
-                     Post
+                     Reddit Post:
                      <br></br>
                     <Link href={analyticsData.url} color="#20556f">
                         {analyticsData.url}
