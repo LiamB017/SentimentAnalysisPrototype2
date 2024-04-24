@@ -86,8 +86,21 @@ const SentimentOvertime = ({ analyticsData }) => {
         }}
       >
         <CartesianGrid strokeDasharray="4 4" />
-        <XAxis dataKey="name" />
-        <YAxis />
+        <XAxis
+          dataKey="name"
+
+        />
+
+        <YAxis
+          label={{
+            value: "Positive/Negative Values",
+            angle: -90,
+            position: "insideLeft",
+            fill: "#20556f",
+            fontWeight: "bolder",
+            dy: 50,
+          }}
+        />
         <Tooltip />
         <Legend />
         <Line
