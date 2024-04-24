@@ -58,7 +58,7 @@ const SearchForm = ({ setResponseData }) => {
       setLoading(true); // Start loading
 
       fetch("/sentiment", {
-        method: "GET",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
