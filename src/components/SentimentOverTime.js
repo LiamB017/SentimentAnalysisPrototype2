@@ -1,10 +1,6 @@
 import React from "react";
-import { useState } from "react";
-import SentimentStats from "./SentimentStats";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
-import { Cell, ResponsiveContainer, Legend } from "recharts";
+import {  Legend } from "recharts";
 import {
   LineChart,
   Line,
