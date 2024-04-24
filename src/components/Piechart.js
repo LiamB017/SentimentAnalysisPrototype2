@@ -1,6 +1,5 @@
 import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
-import { useState } from "react";
 import SentimentStats from "./SentimentStats";
 
 
