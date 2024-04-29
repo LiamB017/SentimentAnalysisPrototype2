@@ -37,7 +37,7 @@ stop_words = load_stopwords()
 
 print(stop_words)
 
-@app.route('/sentiment', methods=['GET'])
+@app.route('/sentiment', methods=['GET', 'POST'])
 def get_sentiment_analysis():
         start_time = time.time()
         topic = request.json.get('topic', '')
