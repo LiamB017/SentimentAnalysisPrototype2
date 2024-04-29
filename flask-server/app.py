@@ -11,10 +11,12 @@ import praw
 import nltk
 nltk.download('punkt')
 import datetime
-
-
+from flask import Flask
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+
 
 reddit = praw.Reddit(
         client_id="446egcbq34XRYrgst8DDJg",

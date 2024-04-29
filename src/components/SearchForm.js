@@ -57,7 +57,7 @@ const SearchForm = ({ setResponseData }) => {
     if (!isRequired()) {
       setLoading(true); // Start loading
 
-      fetch("/sentiment", {
+      fetch("/https://backendsentiment.azurewebsites.net/sentiment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
