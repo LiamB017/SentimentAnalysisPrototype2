@@ -11,6 +11,8 @@ import praw
 import nltk
 nltk.download('punkt')
 import datetime
+from flask_cors import CORS, cross_origin
+
 
 
 
@@ -36,6 +38,7 @@ stop_words = load_stopwords()
 print(stop_words)
 
 @app.route('/sentiment', methods=['POST'])
+@cross_origin()
 def get_sentiment_analysis():
         start_time = time.time()
         topic = request.json.get('topic', '')

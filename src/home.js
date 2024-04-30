@@ -17,7 +17,7 @@ const Home = () => {
    const handleClick = (title) => {
      setLoading(true); // Start loading
 
-     fetch("/analyze_sentiment", {
+     fetch("http://localhost:3000/analyze_sentiment", {
        method: "POST",
        headers: {
          "Content-Type": "application/json",

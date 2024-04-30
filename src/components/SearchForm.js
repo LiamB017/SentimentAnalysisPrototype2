@@ -58,7 +58,7 @@ const SearchForm = ({ setResponseData }) => {
     if (!isRequired()) {
       setLoading(true); // Start loading
 
-      fetch("/sentiment", {
+      fetch("http://localhost:3000/sentiment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
