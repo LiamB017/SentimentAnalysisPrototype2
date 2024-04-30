@@ -100,11 +100,22 @@ const SentimentStats = ({ analyticsData }) => {
                     component="div"
                     sx={{ textAlign: "center" }}
                   >
-
-                     Reddit Post:
-                     <br></br>
-                    <Link href={analyticsData.url} color="#20556f">
-                        {analyticsData.url}
+                    Reddit Post:
+                    <br />
+                    <Link
+                      href={analyticsData.url}
+                      color="#20556f"
+                      sx={{
+                        display: "inline-block",
+                        maxWidth: "100%", // Set maximum width to container width
+                        wordWrap: "break-word", // Allow long URLs to break
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      {analyticsData.url.length > 40
+                        ? analyticsData.url.substring(0, 40) + "..."
+                        : analyticsData.url}
                     </Link>
                   </Typography>
                 </Box>

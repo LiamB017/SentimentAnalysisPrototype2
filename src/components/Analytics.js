@@ -3,6 +3,8 @@ import Piechart from "./Piechart";
 import Grid from "@mui/material/Grid";
 import TopComments from "./TopComments";
 import WordCloud from "./WordCloud";
+import Timechart from "./Timechart";
+import { Link } from "@mui/material/";
 import SentimentOvertime from "./SentimentOverTime";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/material";

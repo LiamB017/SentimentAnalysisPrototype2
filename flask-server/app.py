@@ -11,12 +11,10 @@ import praw
 import nltk
 nltk.download('punkt')
 import datetime
-from flask import Flask
-from flask_cors import CORS
+
+
 
 app = Flask(__name__)
-CORS(app)
-
 
 reddit = praw.Reddit(
         client_id="446egcbq34XRYrgst8DDJg",
@@ -37,7 +35,7 @@ stop_words = load_stopwords()
 
 print(stop_words)
 
-@app.route('/sentiment', methods=['GET', 'POST'])
+@app.route('/sentiment', methods=['POST'])
 def get_sentiment_analysis():
         start_time = time.time()
         topic = request.json.get('topic', '')
@@ -46,6 +44,7 @@ def get_sentiment_analysis():
         if topic and subreddit:
                         searched_posts = subreddit.search(topic, sort='hot', limit=5)
                         post_titles = [post.title for post in searched_posts]
+
                         print("Post titles: ", post_titles)
 
                         end_time = time.time()  # Record the end time
@@ -129,7 +128,7 @@ def get_sentiment_analysis():
         return {"message": "Invalid request"}
 
 
-@app.route('/analyze_sentiment', methods=['POST', 'GET'])
+@app.route('/analyze_sentiment', methods=['POST'])
 def perform_sentiment_analysis():
           start_time = time.time()
           post_title = request.json.get('post_title', '')

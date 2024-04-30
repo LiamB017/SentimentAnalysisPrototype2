@@ -1,12 +1,10 @@
-/* eslint-disable no-unused-vars */
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchForm from "./components/SearchForm.js";
 import Analytics from "./components/Analytics.js";
 import CircularProgress from "@mui/material/CircularProgress";
 
-//testing 3
 
 const Home = () => {
   const [responseData, setResponseData] = useState(null);

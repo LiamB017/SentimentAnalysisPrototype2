@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
+import { ThemeProvider, createTheme } from "@mui/material";
 import { useTheme } from "@emotion/react";
 
 const SearchForm = ({ setResponseData }) => {
@@ -57,7 +58,7 @@ const SearchForm = ({ setResponseData }) => {
     if (!isRequired()) {
       setLoading(true); // Start loading
 
-      fetch("/https://backendsentiment.azurewebsites.net/sentiment", {
+      fetch("/sentiment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

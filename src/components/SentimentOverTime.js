@@ -1,6 +1,10 @@
 import React from "react";
+import { useState } from "react";
+import SentimentStats from "./SentimentStats";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
-import {  Legend } from "recharts";
+import { Cell, ResponsiveContainer, Legend } from "recharts";
 import {
   LineChart,
   Line,
@@ -82,21 +86,8 @@ const SentimentOvertime = ({ analyticsData }) => {
         }}
       >
         <CartesianGrid strokeDasharray="4 4" />
-        <XAxis
-          dataKey="name"
-
-        />
-
-        <YAxis
-          label={{
-            value: "Positive/Negative Values",
-            angle: -90,
-            position: "insideLeft",
-            fill: "#20556f",
-            fontWeight: "bolder",
-            dy: 50,
-          }}
-        />
+        <XAxis dataKey="name" />
+        <YAxis />
         <Tooltip />
         <Legend />
         <Line

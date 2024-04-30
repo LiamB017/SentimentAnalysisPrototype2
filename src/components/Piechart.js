@@ -1,12 +1,15 @@
 import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
+import { useState } from "react";
 import SentimentStats from "./SentimentStats";
-
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
 const Piechart = ({ analyticsData }) => {
 
 
-
+  const [showSecondChart, setShowSecondChart] = useState(false);
   console.log(analyticsData, "Piechart has responsedata");
   console.log(analyticsData.sentiment_by_date, "This is sentiment by date object")
 
