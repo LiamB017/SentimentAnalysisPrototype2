@@ -46,7 +46,6 @@ def get_sentiment_analysis():
         if topic and subreddit:
                         searched_posts = subreddit.search(topic, sort='hot', limit=5)
                         post_titles = [post.title for post in searched_posts]
-
                         print("Post titles: ", post_titles)
 
                         end_time = time.time()  # Record the end time
@@ -130,7 +129,7 @@ def get_sentiment_analysis():
         return {"message": "Invalid request"}
 
 
-@app.route('/analyze_sentiment', methods=['POST'])
+@app.route('/analyze_sentiment', methods=['POST', 'GET'])
 def perform_sentiment_analysis():
           start_time = time.time()
           post_title = request.json.get('post_title', '')
