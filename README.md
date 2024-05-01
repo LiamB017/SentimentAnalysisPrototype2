@@ -1,6 +1,6 @@
 # SentimentAnalysisPrototype2
 
-This is the code for my sentiment analysis visualisation application using flask and react. To set up this project, download a zip of the layout refactor branch, specifically the commit 148a7568a161286c99a366acb07a9ea19d8a5b34 titled "small fixes"
+This is the code for my sentiment analysis visualisation application using flask and react. To set up this project, download a zip of the SentimentFinal branch.
 
 To install dependancies, cd src and then npm install
 
