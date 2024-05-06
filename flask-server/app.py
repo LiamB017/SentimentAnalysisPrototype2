@@ -162,7 +162,7 @@ def perform_sentiment_analysis():
                                         #   analysing sentiment of comments by date
                                           sentiment_by_date = defaultdict(list)
 
-
+                                #       for each date, apply analysis to all of the comments
                                           analyzer = SentimentIntensityAnalyzer()
                                           for date, comments in comments_by_date.items():
                                                   comments_text = ' '.join(comments)
